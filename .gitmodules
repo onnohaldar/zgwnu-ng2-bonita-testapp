@@ -1,0 +1,3 @@
+[submodule "app/zgwnu2"]
+	path = app/zgwnu2
+	url = https://github.com/onnohaldar/zgwnu-ng2-bonita.git
