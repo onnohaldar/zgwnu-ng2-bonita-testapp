@@ -1,0 +1,54 @@
+// generic angular 2 modules
+import { NgModule }      from '@angular/core'
+import { BrowserModule } from '@angular/platform-browser'
+import { FormsModule }   from '@angular/forms'
+import { HttpModule }    from '@angular/http'
+import { MaterialModule } from '@angular/material'
+
+// additional angular 2 modules
+import { DatepickerModule } from './zgwnu2/datepicker/datepicker.module'
+import 'hammerjs'
+
+// application modules
+import { AppRoutingModule } from './app-routing.module'
+
+// application components
+import { AppComponent } from './app.component'
+import { ToolbarComponent } from './zgwnu2/toolbar'
+import { BonitaFileUploadComponent } from './zgwnu2/bonita'
+import { TestComponent } from './test/test.component'
+
+// application service providers
+import { BonitaConfigService, BonitaFileUploadService } from './zgwnu2/bonita'
+
+// angular metadata for app module 
+@NgModule({
+  // import all used modules
+  imports: [ 
+    BrowserModule,
+    FormsModule, 
+    HttpModule,
+    MaterialModule.forRoot(), 
+    DatepickerModule, 
+    AppRoutingModule, 
+    ],
+  // declarations for all application components
+  declarations: [  
+    AppComponent,
+    ToolbarComponent, 
+    BonitaFileUploadComponent, 
+    TestComponent, 
+   ],
+  // globaly used providers (services)
+  providers: [ 
+    BonitaConfigService,
+    BonitaFileUploadService, 
+    ], 
+  // start-up with components and services
+  bootstrap: [ AppComponent ]
+})
+
+// export class so it can be for booting from main module
+export class AppModule { 
+
+}

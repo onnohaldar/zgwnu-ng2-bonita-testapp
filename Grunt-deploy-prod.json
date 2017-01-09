@@ -1,0 +1,6 @@
+{
+    "host" : "test.server",
+    "login" : "********",
+    "password" : "****",
+    "port" : "8080"
+}

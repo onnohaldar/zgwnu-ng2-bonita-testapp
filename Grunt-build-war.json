@@ -1,0 +1,8 @@
+{
+    "aotSrcFolder": "aot",
+    "warDistFolder": "war",
+    "warName": "ng2-bonita",
+    "webXmlWelcome": "war-index.html",
+    "webXmlDisplayName": "Hypzaak 2 (prod)",
+    "warDeployPath" : "ZgwnuNg2Bonita"
+}

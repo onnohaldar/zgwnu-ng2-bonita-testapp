@@ -1,0 +1,6 @@
+{
+    "host" : "localhost",
+    "login" : "managerscript",
+    "password" : "deploy",
+    "port" : "8080"
+}

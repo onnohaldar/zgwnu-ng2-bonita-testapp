@@ -1,0 +1,10 @@
+.test-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.test-item {
+    align-self: auto;
+}
