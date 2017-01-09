@@ -1,10 +1,16 @@
 .test-container {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    padding: 5px;
+    background-color: #E8EAF6;
 }
 
 .test-item {
     align-self: auto;
+    margin: 5px;
+    width: 325px;
+    height: 150px;
 }
