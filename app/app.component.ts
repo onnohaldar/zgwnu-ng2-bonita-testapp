@@ -3,7 +3,7 @@ import { Component } from '@angular/core'
 import { Router } from '@angular/router'
 import { MdIconRegistry } from '@angular/material'
 
-import { BonitaConfigService } from './zgwnu2/bonita'
+import { BonitaConfigService, BonitaAuthenticationService } from './zgwnu2/bonita'
 import { ToolbarComponent, ToolbarService } from './zgwnu2/toolbar'
 
 import { TestComponent } from './test/test.component'
@@ -16,6 +16,7 @@ import { TestComponent } from './test/test.component'
   providers: [
     MdIconRegistry,
     ToolbarService, 
+    BonitaAuthenticationService, 
     TestComponent, 
     ],
 })
