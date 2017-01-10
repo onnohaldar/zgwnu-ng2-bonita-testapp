@@ -15,10 +15,12 @@
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "init:aot": "grunt clean:aot && ngc -p tsconfig-aot-init.json && grunt aot_init",
+    "init:prod": "grunt clean:aot && ngc -p tsconfig-prod-init.json && grunt aot_init",
     "ngc:aot": "ngc -p tsconfig-aot.json",
     "rollup:aot": "rollup -c rollup-config.js",
     "lite:aot": "lite-server -c aot/bs-config.json",
     "build:aot": "ngc -p tsconfig-aot.json && rollup -c rollup-config.js && lite-server -c aot/bs-config.json",
+    "build:prod": "ngc -p tsconfig-prod.json && rollup -c rollup-config.js && lite-server -c aot/bs-config.json",
     "map:aot": "source-map-explorer aot/dist/build.js",
     "build:war": "grunt --gruntfile Grunt-build-war.js",
     "local:war": "grunt --gruntfile Grunt-build-war.js && grunt --gruntfile Grunt-deploy-local.js && grunt localapp"

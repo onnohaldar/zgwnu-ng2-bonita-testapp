@@ -1,8 +1,8 @@
 {
     "aotSrcFolder": "aot",
     "warDistFolder": "war",
-    "warName": "ng2-bonita",
+    "warName": "ng2-bonita-testapp",
     "webXmlWelcome": "war-index.html",
-    "webXmlDisplayName": "Hypzaak 2 (prod)",
+    "webXmlDisplayName": "Zgwnu Ng2 Bonita TestApp (prod)",
     "warDeployPath" : "ZgwnuNg2Bonita"
 }

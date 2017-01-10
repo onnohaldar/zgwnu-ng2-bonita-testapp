@@ -10,7 +10,7 @@ import { TestComponent } from './test/test.component'
 
 @Component({
   moduleId: module.id,
-  selector: 'ng2-bonita-test',
+  selector: 'ng2-bonita-testapp',
   templateUrl: 'app.component.html',
   styleUrls: [ 'app.component.css' ],
   providers: [

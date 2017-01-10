@@ -8,16 +8,18 @@
     "experimentalDecorators": true,
     "lib": ["es2015", "dom"],
     "noImplicitAny": true,
-    "suppressImplicitAnyIndexErrors": true
+    "suppressImplicitAnyIndexErrors": true,
+    "typeRoots": [
+      "node_modules/@types/"
+    ]
   },
-
   "files": [
     "app/app.module.ts",
-    "app/main-jit.ts"
+    "app/main-aot-prod.ts"
   ],
-
   "angularCompilerOptions": {
    "genDir": "aot",
-   "skipMetadataEmit" : true
+   "skipMetadataEmit" : true,
+   "debug": true
  }
 }
