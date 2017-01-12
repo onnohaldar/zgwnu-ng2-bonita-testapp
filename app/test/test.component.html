@@ -2,7 +2,13 @@
 
     <md-card class="test-item">
         <md-card-title>Bonita Authentication</md-card-title>
-        <md-card-subtitle>Bonita BPM Server Session</md-card-subtitle>
+        <md-card-subtitle>
+            <md-icon 
+                [style.background-color] = "test_AuthenticationSessionPassed ? 'green': 'red'"
+                class="md-24" svgIcon="action:done_black_24px">
+            </md-icon>
+            Bonita BPM Server Session
+        </md-card-subtitle>
         <md-card-content>
             User Id: {{authenticationService.session.user_id}}
             <br>

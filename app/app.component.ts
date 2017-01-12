@@ -42,6 +42,9 @@ export class AppComponent {
     toolbarService.subTitle = ' > Lib Functions ...'
 
     // register all used material icons here
+    mdIconRegistry.addSvgIconInNamespace('action', 'done_black_24px', 
+      sanitizer.bypassSecurityTrustResourceUrl(this.actionIconsPath + 'ic_done_black_24px.svg'))
+
     mdIconRegistry.addSvgIconInNamespace('action', 'open_in_browser_24px', 
       sanitizer.bypassSecurityTrustResourceUrl(this.actionIconsPath + 'ic_open_in_browser_24px.svg'))
 

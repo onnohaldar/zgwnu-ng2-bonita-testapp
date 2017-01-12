@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core'
 
-import { BonitaAuthenticationService } from '../zgwnu2/bonita'
+import { BonitaAuthenticationService, BonitaSession } from '../zgwnu2/bonita'
 
 @Component({
   moduleId: module.id,
@@ -11,20 +11,23 @@ import { BonitaAuthenticationService } from '../zgwnu2/bonita'
 
 export class TestComponent implements OnInit {
 
+  session: BonitaSession
+  test_AuthenticationSessionPassed: boolean = false
+
   constructor(
-    public authenticationService: BonitaAuthenticationService, 
+    private authenticationService: BonitaAuthenticationService, 
   )
   {
-
   }
 
   ngOnInit():void {
     console.log('InitTestComponent')
-    this.test_Authentication_Session()
+    this.test_AuthenticationSession()
   }
 
-  private test_Authentication_Session() {
-
+  private test_AuthenticationSession() {
+    this.session = this.authenticationService.session
+    if (this.session) { this.test_AuthenticationSessionPassed = true }
   }
   
 }
