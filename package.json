@@ -4,6 +4,7 @@
   "description": "Angular 2 Library with bonita BPM Rest Api Test Application",
   "scripts": {
     "start": "concurrently \"tsc -w\" \"lite-server\" ",
+    "postinstall:mac": "grunt --gruntfile Grunt-post-install-bonita.js postinstall_mac",
     "e2e": "tsc && concurrently \"http-server -s\" \"protractor protractor.config.js\" --kill-others --success first",
     "lint": "tslint ./app/**/*.ts -t verbose",
     "lite": "lite-server",
