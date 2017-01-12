@@ -54,7 +54,30 @@
                 searchProcessDefinitions
             </md-card-subtitle>
             <md-card-content>
-                {{processDefinition?.name}} ({{processDefinition?.version}})
+                Process: {{processDefinition?.name}} ({{processDefinition?.version}})
+            </md-card-content>
+
+
+            <md-card-subtitle>
+                <md-checkbox 
+                    [checked]="passedTestBPMProcessGetProcessDefinition"
+                    [disabled]="true" >
+                </md-checkbox>
+                getProcessDefinition
+            </md-card-subtitle>
+            <md-card-content>
+                Process Id: {{processDefinition?.id}}
+            </md-card-content>
+
+            <md-card-subtitle>
+                <md-checkbox 
+                    [checked]="passedTestBPMProcessCreateCase"
+                    [disabled]="true" >
+                </md-checkbox>
+                createCase
+            </md-card-subtitle>
+            <md-card-content>
+                
             </md-card-content>
 
     </md-card>
