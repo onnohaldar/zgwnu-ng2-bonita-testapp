@@ -13,6 +13,6 @@
   "exclude": [
         "node_modules",
         "app/main-aot.ts",
-        "app/main-prod.ts"
+        "app/main-aot-prod.ts"
     ]
 }

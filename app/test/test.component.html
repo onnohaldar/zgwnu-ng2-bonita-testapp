@@ -2,24 +2,41 @@
 
     <md-card class="test-item">
         <md-card-title>Bonita Authentication</md-card-title>
-        <md-card-subtitle>
-            <md-icon 
-                [style.background-color] = "test_AuthenticationSessionPassed ? 'green': 'red'"
-                class="md-24" svgIcon="action:done_black_24px">
-            </md-icon>
-            Bonita BPM Server Session
-        </md-card-subtitle>
-        <md-card-content>
-            User Id: {{authenticationService.session.user_id}}
-            <br>
-            User Name: {{authenticationService.session.user_name}}
-            <br>
-            Session Id: {{authenticationService.session.session_id}}
-        </md-card-content>
+
+            <md-card-subtitle>
+                <md-checkbox 
+                    [checked]="passedTestAuthenticationSession"
+                    [disabled]="true" >
+                </md-checkbox>
+                Bonita BPM Server Session
+            </md-card-subtitle>
+            <md-card-content>
+                User Id: {{authenticationService.session?.user_id}}
+                <br>
+                User Name: {{authenticationService.session?.user_name}}
+                <br>
+                Session Id: {{authenticationService.session?.session_id}}
+            </md-card-content>
+
     </md-card>
 
     <md-card class="test-item">
         <md-card-title>Bonita BPM Activity and Task</md-card-title>
+            
+            <md-card-subtitle>
+                Sub 1
+            </md-card-subtitle>
+            <md-card-content>
+                Sub 1 content
+            </md-card-content>
+
+            <md-card-subtitle>
+                Sub 2
+            </md-card-subtitle>
+            <md-card-content>
+                Sub 2 content
+            </md-card-content>
+
     </md-card>
 
     <md-card class="test-item">
@@ -28,6 +45,18 @@
 
     <md-card class="test-item">
         <md-card-title>Bonita BPM Process</md-card-title>
+
+            <md-card-subtitle>
+                <md-checkbox 
+                    [checked]="passedTestBPMProcessSearchProcessDefinitions"
+                    [disabled]="true" >
+                </md-checkbox>
+                searchProcessDefinitions
+            </md-card-subtitle>
+            <md-card-content>
+                {{processDefinition?.name}} ({{processDefinition?.version}})
+            </md-card-content>
+
     </md-card>
 
     <md-card class="test-item">

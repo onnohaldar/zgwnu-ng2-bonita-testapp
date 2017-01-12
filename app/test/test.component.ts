@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core'
 
-import { BonitaAuthenticationService, BonitaSession } from '../zgwnu2/bonita'
+import { BonitaErrorResponse, 
+  BonitaAuthenticationService, BonitaSession, 
+  BonitaBpmProcessService, BonitaSearchParms, BonitaProcessDefinition } from '../zgwnu2/bonita'
 
 @Component({
   moduleId: module.id,
@@ -11,23 +13,57 @@ import { BonitaAuthenticationService, BonitaSession } from '../zgwnu2/bonita'
 
 export class TestComponent implements OnInit {
 
+  // generic bonita rest api test vars
+  errorResponse: BonitaErrorResponse
+
+  // authentication test vars
   session: BonitaSession
-  test_AuthenticationSessionPassed: boolean = false
+  passedTestAuthenticationSession: boolean = false
+
+  // bpm process test vars
+  processDefinition: BonitaProcessDefinition
+  passedTestBPMProcessSearchProcessDefinitions: boolean = false
 
   constructor(
     private authenticationService: BonitaAuthenticationService, 
+    private bpmProcessService: BonitaBpmProcessService, 
   )
   {
   }
 
   ngOnInit():void {
     console.log('InitTestComponent')
-    this.test_AuthenticationSession()
+
+    // start testchain
+    this.testAuthenticationSession()
+
+    // start sequential tests
+
+
   }
 
-  private test_AuthenticationSession() {
+  private testAuthenticationSession() {
     this.session = this.authenticationService.session
-    if (this.session) { this.test_AuthenticationSessionPassed = true }
+    if (this.session) { 
+      this.passedTestAuthenticationSession = true 
+      // next test in chain
+      this.testBPMProcessSearchProcessDefinitions()
+    }
+  }
+
+
+  private testBPMProcessSearchProcessDefinitions() {
+    let bonitaSearchParms: BonitaSearchParms = new BonitaSearchParms(0, 1)
+    bonitaSearchParms.filters = ['name=Basic Test', 'version=0.0.1']
+
+    this.bpmProcessService.searchProcessDefinitions(bonitaSearchParms)
+      .subscribe(
+        processDefinitions => {
+          this.processDefinition = processDefinitions[0]
+          this.passedTestBPMProcessSearchProcessDefinitions = true
+        },
+        errorResponse => this.errorResponse = errorResponse
+      )
   }
   
 }
