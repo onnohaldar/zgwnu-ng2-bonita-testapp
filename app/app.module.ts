@@ -16,6 +16,7 @@ import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
 import { ToolbarComponent } from './zgwnu2/toolbar'
 import { BonitaFileUploadComponent } from './zgwnu2/bonita'
+import { LoginComponent } from './login/login.component'
 import { TestComponent } from './test/test.component'
 
 // application service providers
@@ -37,6 +38,7 @@ import { BonitaConfigService, BonitaFileUploadService } from './zgwnu2/bonita'
     AppComponent,
     ToolbarComponent, 
     BonitaFileUploadComponent, 
+    LoginComponent, 
     TestComponent, 
    ],
   // globaly used providers (services)
