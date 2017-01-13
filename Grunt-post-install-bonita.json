@@ -1,6 +1,6 @@
 {
   "bonita": {
-    "installVersion": "7.4.0",
+    "installVersion": "7.4.1",
     "installPathMacOs": "/Applications/BonitaBPMCommunity-",
     "installPathLinuxUbuntu": "/opt/BonitaBPM-"
   },

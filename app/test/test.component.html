@@ -11,11 +11,13 @@
                 Bonita BPM Server Session
             </md-card-subtitle>
             <md-card-content>
-                User Id: {{authenticationService.session?.user_id}}
+                User Id: {{session?.user_id}}
                 <br>
-                User Name: {{authenticationService.session?.user_name}}
+                User Name: {{session?.user_name}}
                 <br>
-                Session Id: {{authenticationService.session?.session_id}}
+                Session Id: {{session?.session_id}}
+                <br>
+                Token: {{session?.token}}
             </md-card-content>
 
     </md-card>

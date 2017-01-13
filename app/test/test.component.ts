@@ -60,20 +60,21 @@ export class TestComponent implements OnInit {
     console.log('InitTestComponent')
 
     // start testchain
-    this.testAuthenticationSession()
-
-    // start sequential tests
-
+    this.testAuthenticationGetSession()
 
   }
 
-  private testAuthenticationSession() {
-    this.session = this.authenticationService.session
-    if (this.session) { 
-      this.passedTestAuthenticationSession = true 
-      // next test in chain (1)
-      this.testBPMProcessSearchProcessDefinitions()
-    }
+  private testAuthenticationGetSession() {
+    this.authenticationService.getSession()
+      .subscribe(
+        session => {
+          this.session = session
+          this.passedTestAuthenticationSession = true
+          // next test in chain (1)
+          this.testBPMProcessSearchProcessDefinitions()
+        },
+        errorResponse => this.errorResponse = errorResponse
+      )
   }
 
 
