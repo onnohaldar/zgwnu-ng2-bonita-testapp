@@ -69,6 +69,7 @@ export class TestComponent implements OnInit {
       .subscribe(
         session => {
           this.session = session
+          this.authenticationService.setSessionToken(session)
           this.passedTestAuthenticationSession = true
           // next test in chain (1)
           this.testBPMProcessSearchProcessDefinitions()
