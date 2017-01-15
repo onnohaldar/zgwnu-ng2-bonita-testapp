@@ -79,7 +79,9 @@
                 createCase
             </md-card-subtitle>
             <md-card-content>
-                
+                Status: {{createCaseSuccessResponse?.status}} - {{createCaseSuccessResponse?.statusText}}
+                <br>
+                Case Id: {{createCaseSuccessResponse?.caseId}}
             </md-card-content>
 
     </md-card>
