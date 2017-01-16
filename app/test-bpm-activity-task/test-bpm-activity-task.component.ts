@@ -71,7 +71,7 @@ export class TestBpmActivityTaskComponent implements OnInit {
                     this.activity = activity
                     this.passedTestBPMActivityGetActivity = true
                     // next test in chain (2)
-
+                    this.BPMHumanTaskSearchHumanTasks()
                 },
                 errorResponse => this.errorResponse
             )
@@ -86,20 +86,20 @@ export class TestBpmActivityTaskComponent implements OnInit {
                 humanTask => {
                     this.humanTask = humanTask[0]
                     this.passedTestBPMHumanTaskSearchHumanTasks = true
-                    // next test in chain (1)
-                    this.BPMActivityGetActivity()
+                    // next test in chain (3)
+                    this.BPMHumanTaskGetHumanTask()
                 },
                 errorResponse => this.errorResponse = errorResponse
             )
     }
 
-    private BPMActivityGetActivity() {
-        this.bpmActivityService.getActivity(this.activity.id)
+    private BPMHumanTaskGetHumanTask() {
+        this.bpmHumanTaskService.getHumanTask(this.humanTask.id)
             .subscribe(
-                activity => {
-                    this.activity = activity
-                    this.passedTestBPMActivityGetActivity = true
-                    // next test in chain (2)
+                humanTask => {
+                    this.humanTask = humanTask
+                    this.passedTestBPMHumanTaskGetHumanTask = true
+                    // next test in chain (4)
 
                 },
                 errorResponse => this.errorResponse

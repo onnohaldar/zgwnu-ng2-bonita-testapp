@@ -21,3 +21,25 @@
 <md-card-content>
     Activity Id: {{activity?.id}}
 </md-card-content>
+
+<md-card-subtitle>
+    <md-checkbox 
+        [checked]="passedTestBPMHumanTaskSearchHumanTasks"
+        [disabled]="true" >
+    </md-checkbox>
+    searchHumanTasks
+</md-card-subtitle>
+<md-card-content>
+    Human Task: {{humanTask?.name}}
+</md-card-content>
+
+<md-card-subtitle>
+    <md-checkbox 
+        [checked]="passedTestBPMHumanTaskGetHumanTask"
+        [disabled]="true" >
+    </md-checkbox>
+    getHumanTask
+</md-card-subtitle>
+<md-card-content>
+    Human Task Id: {{humanTask?.id}}
+</md-card-content>
