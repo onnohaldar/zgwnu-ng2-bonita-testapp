@@ -43,3 +43,36 @@
 <md-card-content>
     Human Task Id: {{humanTask?.id}}
 </md-card-content>
+
+<md-card-subtitle>
+    <md-checkbox 
+        [checked]="passedTestBPMTaskSearchTasks"
+        [disabled]="true" >
+    </md-checkbox>
+    searchTasks
+</md-card-subtitle>
+<md-card-content>
+    Task: {{task?.name}}
+</md-card-content>
+
+<md-card-subtitle>
+    <md-checkbox 
+        [checked]="passedTestBPMTaskGetTask"
+        [disabled]="true" >
+    </md-checkbox>
+    getTask
+</md-card-subtitle>
+<md-card-content>
+    Task Name: {{task?.name}} ({{task?.id}})
+</md-card-content>
+
+<md-card-subtitle>
+    <md-checkbox 
+        [checked]="passedTestBPMUserTaskGetUserTask"
+        [disabled]="true" >
+    </md-checkbox>
+    getUserTask
+</md-card-subtitle>
+<md-card-content>
+    User Task: {{userTask?.name}} ({{userTask?.id}})
+</md-card-content>
