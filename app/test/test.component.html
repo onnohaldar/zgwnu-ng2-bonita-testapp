@@ -46,44 +46,8 @@
     </md-card>
 
     <md-card class="test-item">
-        <md-card-title>Bonita BPM Process</md-card-title>
-
-            <md-card-subtitle>
-                <md-checkbox 
-                    [checked]="passedTestBPMProcessSearchProcessDefinitions"
-                    [disabled]="true" >
-                </md-checkbox>
-                searchProcessDefinitions
-            </md-card-subtitle>
-            <md-card-content>
-                Process: {{processDefinition?.name}} ({{processDefinition?.version}})
-            </md-card-content>
-
-
-            <md-card-subtitle>
-                <md-checkbox 
-                    [checked]="passedTestBPMProcessGetProcessDefinition"
-                    [disabled]="true" >
-                </md-checkbox>
-                getProcessDefinition
-            </md-card-subtitle>
-            <md-card-content>
-                Process Id: {{processDefinition?.id}}
-            </md-card-content>
-
-            <md-card-subtitle>
-                <md-checkbox 
-                    [checked]="passedTestBPMProcessCreateCase"
-                    [disabled]="true" >
-                </md-checkbox>
-                createCase
-            </md-card-subtitle>
-            <md-card-content>
-                Status: {{createCaseSuccessResponse?.status}} - {{createCaseSuccessResponse?.statusText}}
-                <br>
-                Case Id: {{createCaseSuccessResponse?.caseId}}
-            </md-card-content>
-
+        <test-bpm-process>
+        </test-bpm-process>
     </md-card>
 
     <md-card class="test-item">
