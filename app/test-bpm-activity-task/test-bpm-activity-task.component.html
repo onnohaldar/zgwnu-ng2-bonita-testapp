@@ -1,0 +1,23 @@
+<md-card-title>Bonita BPM Activity and Task</md-card-title>
+
+<md-card-subtitle>
+    <md-checkbox 
+        [checked]="passedTestBPMActivitySearchActivities"
+        [disabled]="true" >
+    </md-checkbox>
+    searchActivities
+</md-card-subtitle>
+<md-card-content>
+    Activity: {{activity?.name}}
+</md-card-content>
+
+<md-card-subtitle>
+    <md-checkbox 
+        [checked]="passedTestBPMActivityGetActivity"
+        [disabled]="true" >
+    </md-checkbox>
+    getActivity
+</md-card-subtitle>
+<md-card-content>
+    Activity Id: {{activity?.id}}
+</md-card-content>
