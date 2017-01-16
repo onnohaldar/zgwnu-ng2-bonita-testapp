@@ -2,7 +2,7 @@
   "bonita": {
     "installVersion": "7.4.1",
     "installPathMacOs": "/Applications/BonitaBPMCommunity-",
-    "installPathLinuxUbuntu": "/opt/BonitaBPM-"
+    "installPathWindows": "c:/BonitaBPMCommunity-"
   },
   "tomcat": {
     "confPath" : "workspace/server_configuration/tomcat_conf",

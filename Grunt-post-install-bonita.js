@@ -26,8 +26,28 @@ module.exports = function(grunt) {
           },       
         ],
       },
-    },
+      tomcat_config_win: {
+        files: [
+          {
+            expand: true,
+            cwd: 'cfg/tomcat', 
+            src: ['tomcat-users.xml'], 
+            dest: '<%= pkg.bonita.installPathWindows %><%= pkg.bonita.installVersion %>/<%= pkg.tomcat.confPath %>', 
+          },       
+        ],
+      },
+      bonita_webinf_cors_win: {
+        files: [
+          {
+            expand: true,
+            cwd: 'cfg/bonita/WEB-INF/cors', 
+            src: ['web.xml'], 
+            dest: '<%= pkg.bonita.installPathWindows %><%= pkg.bonita.installVersion %>/<%= pkg.tomcat.bonitaWebInfPath %>', 
+          },       
+        ],
+      },
 
+    },
   });
 
   // Load the plugins that provides the tasks
@@ -43,5 +63,6 @@ module.exports = function(grunt) {
 
   // mac Task: copy:studio
   grunt.registerTask('postinstall_mac', ['copy:tomcat_config_mac', 'copy:bonita_webinf_cors_mac'] );
+  grunt.registerTask('postinstall_win', ['copy:tomcat_config_win', 'copy:bonita_webinf_cors_win'] );
 
 };
