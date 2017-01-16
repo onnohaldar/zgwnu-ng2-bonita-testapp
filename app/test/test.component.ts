@@ -33,12 +33,12 @@ export class TestComponent implements OnInit {
   passedTestBPMProcessGetProcessDefinition: boolean = false
   passedTestBPMProcessCreateCase: boolean = false
   createCaseData: any = {
-    masterKey: 'MasterKeyValue1',
+    masterKey: 'Master1 ',
     masterDate: new Date(2017, 0, 12),
     details: [
-      {detailKey: 'detailTestKey1A', xrefKey: 'xrefTestKeyAA'},
-      {detailKey: 'detailTestKey2B', xrefKey: 'xrefTestKeyBB'},
-      {detailKey: 'detailTestKey3C', xrefKey: 'xrefTestKeyCC'},
+      {detailKey: 'Detail1 ', xrefKey: 'XrefA'},
+      {detailKey: 'Detail2 ', xrefKey: 'XrefB'},
+      {detailKey: 'Detail3 ', xrefKey: 'XrefC'},
     ],
     masterBoolean: true,
     masterDouble: Number.MAX_VALUE,
