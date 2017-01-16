@@ -1,25 +1,13 @@
 <div class="test-container">
 
     <md-card class="test-item">
-        <md-card-title>Bonita Authentication</md-card-title>
+        <test-authentication>
+        </test-authentication>
+    </md-card>
 
-            <md-card-subtitle>
-                <md-checkbox 
-                    [checked]="passedTestAuthenticationSession"
-                    [disabled]="true" >
-                </md-checkbox>
-                Bonita BPM Server Session
-            </md-card-subtitle>
-            <md-card-content>
-                User Id: {{session?.user_id}}
-                <br>
-                User Name: {{session?.user_name}}
-                <br>
-                Session Id: {{session?.session_id}}
-                <br>
-                Token: {{session?.token}}
-            </md-card-content>
-
+    <md-card class="test-item">
+        <test-bpm-process>
+        </test-bpm-process>
     </md-card>
 
     <md-card class="test-item">
@@ -43,11 +31,6 @@
 
     <md-card class="test-item">
         <md-card-title>Bonita BPM Data</md-card-title>
-    </md-card>
-
-    <md-card class="test-item">
-        <test-bpm-process>
-        </test-bpm-process>
     </md-card>
 
     <md-card class="test-item">

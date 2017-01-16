@@ -1,0 +1,18 @@
+<md-card-title>Bonita Authentication</md-card-title>
+
+<md-card-subtitle>
+    <md-checkbox 
+        [checked]="passedTestAuthenticationSession"
+        [disabled]="true" >
+    </md-checkbox>
+    Bonita BPM Server Session
+</md-card-subtitle>
+<md-card-content>
+    User Id: {{session?.user_id}}
+    <br>
+    User Name: {{session?.user_name}}
+    <br>
+    Session Id: {{session?.session_id}}
+    <br>
+    Token: {{session?.token}}
+</md-card-content>

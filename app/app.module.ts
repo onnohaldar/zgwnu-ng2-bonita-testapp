@@ -18,6 +18,7 @@ import { ToolbarComponent } from './zgwnu2/toolbar'
 import { BonitaFileUploadComponent } from './zgwnu2/bonita'
 import { LoginComponent } from './login/login.component'
 import { TestComponent } from './test/test.component'
+import { TestAuthenticationComponent } from './test-authentication/test-authentication.component'
 import { TestBpmProcessComponent } from './test-bpm-process/test-bpm-process.component'
 
 // application service providers
@@ -41,6 +42,7 @@ import { BonitaConfigService, BonitaFileUploadService } from './zgwnu2/bonita'
     BonitaFileUploadComponent, 
     LoginComponent, 
     TestComponent, 
+    TestAuthenticationComponent, 
     TestBpmProcessComponent, 
    ],
   // globaly used providers (services)
