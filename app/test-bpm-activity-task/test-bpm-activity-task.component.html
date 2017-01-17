@@ -76,3 +76,14 @@
 <md-card-content>
     User Task: {{userTask?.name}} ({{userTask?.id}})
 </md-card-content>
+
+<md-card-subtitle>
+    <md-checkbox 
+        [checked]="passedTestBPMUserTaskGetUserTaskContext"
+        [disabled]="true" >
+    </md-checkbox>
+    getUserTaskContext
+</md-card-subtitle>
+<md-card-content>
+    User Task Context: {{userTaskContext | json}})
+</md-card-content>

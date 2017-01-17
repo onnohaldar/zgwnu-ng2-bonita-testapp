@@ -39,6 +39,10 @@ export class TestBpmActivityTaskComponent implements OnInit {
     userTask: BonitaTask
     passedTestBPMUserTaskGetUserTask: boolean = false
 
+    userTaskContext: any
+    passedTestBPMUserTaskGetUserTaskContext: boolean = false
+
+
     constructor(
         private bpmActivityService: BonitaBpmActivityService, 
         private bpmHumanTaskService: BonitaBpmHumanTaskService, 
@@ -145,7 +149,6 @@ export class TestBpmActivityTaskComponent implements OnInit {
             )
     }
 
-
     private bpmUserTaskGetUserTask() {
         this.bpmUserTaskService.getUserTask(this.task.id)
             .subscribe(
@@ -153,7 +156,19 @@ export class TestBpmActivityTaskComponent implements OnInit {
                     this.userTask = userTask
                     this.passedTestBPMUserTaskGetUserTask = true
                     // next test in chain (4)
+                    this.bpmUserTaskGetUserTaskContext()
+                },
+                errorResponse => this.errorResponse
+            )
+    }
 
+    private bpmUserTaskGetUserTaskContext() {
+        this.bpmUserTaskService.getUserTaskContext(this.userTask.id)
+            .subscribe(
+                userTaskContext => {
+                    this.userTaskContext = userTaskContext
+                    this.passedTestBPMUserTaskGetUserTaskContext = true
+                    // next test in chain (5)
                 },
                 errorResponse => this.errorResponse
             )
