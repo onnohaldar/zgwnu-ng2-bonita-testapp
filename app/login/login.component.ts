@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
     private credentials: BonitaCredentials = new BonitaCredentials(this.userName, this.passWord, this.navigateTo)
 
     constructor(
-    private authenticationService: BonitaAuthenticationService, 
+        private authenticationService: BonitaAuthenticationService, 
     )
     {
 

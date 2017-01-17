@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core'
 
-import { BonitaResponse ,BonitaErrorResponse, BonitaSearchParms, 
+import { BonitaResponse ,BonitaErrorResponse, BonitaSearchParms, BonitaConfigService, 
   BonitaBpmActivityService, BonitaActivity,
   BonitaBpmHumanTaskService, BonitaHumanTask, 
   BonitaBpmTaskService, BonitaTask, 
@@ -42,12 +42,17 @@ export class TestBpmActivityTaskComponent implements OnInit {
     userTaskContext: any
     passedTestBPMUserTaskGetUserTaskContext: boolean = false
 
+    assignUserName: string
+    assignUserTaskResponse: BonitaResponse
+    passedTestBPMUserTaskAssignUserTask: boolean = false
+
 
     constructor(
         private bpmActivityService: BonitaBpmActivityService, 
         private bpmHumanTaskService: BonitaBpmHumanTaskService, 
         private bpmTaskService: BonitaBpmTaskService, 
         private bpmUserTaskService: BonitaBpmUserTaskService, 
+        private configService: BonitaConfigService, 
     )
     {
     }
@@ -169,8 +174,22 @@ export class TestBpmActivityTaskComponent implements OnInit {
                     this.userTaskContext = userTaskContext
                     this.passedTestBPMUserTaskGetUserTaskContext = true
                     // next test in chain (5)
+                    this.bpmUserTaskAssignUserTask()
                 },
                 errorResponse => this.errorResponse
+            )
+    }
+
+    private bpmUserTaskAssignUserTask() {
+        this.bpmUserTaskService.assignUserTask(this.userTask.id, this.configService.session.user_id)
+            .subscribe(
+                response => {
+                    this.assignUserTaskResponse = response
+                    this.assignUserName = this.configService.session.user_name
+                    this.passedTestBPMUserTaskAssignUserTask = true
+                    // next test in chain (6)
+
+                }
             )
     }
 

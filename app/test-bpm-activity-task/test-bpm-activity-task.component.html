@@ -87,3 +87,14 @@
 <md-card-content>
     User Task Context: {{userTaskContext | json}})
 </md-card-content>
+
+<md-card-subtitle>
+    <md-checkbox 
+        [checked]="passedTestBPMUserTaskAssignUserTask"
+        [disabled]="true" >
+    </md-checkbox>
+    assignUserTask
+</md-card-subtitle>
+<md-card-content>
+    User Task Assign: {{userTask?.name}} => {{assignUserName}} = ({{assignUserTaskResponse | json}})
+</md-card-content>
