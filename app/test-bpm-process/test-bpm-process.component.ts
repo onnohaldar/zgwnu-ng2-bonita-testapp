@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core'
+import {Component, OnInit, Input } from '@angular/core'
 
 import { BonitaResponse ,BonitaErrorResponse, 
     BonitaBpmProcessService, BonitaSearchParms, BonitaProcessDefinition, BonitaCreateCaseSuccessResponse 
   } from '../zgwnu2/bonita'
 
+import { TestCase } from '../test/test-case' 
 import { CreateCaseContract } from './create-case-contract'
 import { Ng2BonitaMasterContract } from './ng2-bonita-master-contract'
 import { Ng2BonitaDetailContract } from './ng2-bonita-detail-contract'
@@ -17,6 +18,7 @@ import { Ng2BonitaXrefContract } from './ng2-bonita-xref-contract'
 })
 
 export class TestBpmProcessComponent implements OnInit {
+  @Input() testCase: TestCase
 
   // Generic Bonita Rest Api test vars
   response: BonitaResponse
@@ -94,6 +96,8 @@ export class TestBpmProcessComponent implements OnInit {
       .subscribe(
         createCaseSuccessResponse => {
           this.createCaseSuccessResponse = createCaseSuccessResponse
+          console.log(this.testCase)
+          this.testCase.caseId = createCaseSuccessResponse.caseId
           this.passedTest_BpmProcess_createCase = true
         },
         errorResponse => this.errorResponse = errorResponse

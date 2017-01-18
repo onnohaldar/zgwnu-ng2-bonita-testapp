@@ -4,6 +4,7 @@ import { BonitaBpmProcessService, BonitaBpmActivityService, BonitaBpmHumanTaskSe
   BonitaBpmUserTaskService, BonitaBpmDataService
   } from '../zgwnu2/bonita'
 
+import { TestCase } from './test-case'
 import { TestAuthenticationComponent } from '../test-authentication/test-authentication.component'
 import { TestBpmProcessComponent } from '../test-bpm-process/test-bpm-process.component'
 import { TestBpmActivityTaskComponent } from '../test-bpm-activity-task/test-bpm-activity-task.component'
@@ -32,6 +33,7 @@ import { TestBpmDataComponent } from '../test-bpm-data/test-bpm-data.component'
 })
 
 export class TestComponent implements OnInit {
+  testCase: TestCase = new TestCase()
 
   ngOnInit():void {
     console.log('InitTestComponent')

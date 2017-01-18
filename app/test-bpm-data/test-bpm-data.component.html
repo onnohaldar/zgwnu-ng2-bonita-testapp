@@ -2,11 +2,12 @@
 
 <md-card-subtitle>
     <md-checkbox 
-        [checked]="passedTest_BpmData_searchCaseVariable"
+        [checked]="passedTest_BpmData_searchCaseVariables"
         [disabled]="true" >
     </md-checkbox>
     searchCaseVariables
 </md-card-subtitle>
 <md-card-content>
-PM
+    Case Variable Name: {{caseVariable?.name}}<br>
+    Case Variable Case Id: {{caseVariable?.case_id}}
 </md-card-content>

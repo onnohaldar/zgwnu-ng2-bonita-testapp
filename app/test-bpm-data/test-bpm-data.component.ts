@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core'
 
-import { BonitaResponse ,BonitaErrorResponse, 
-  BonitaBpmDataService
+import { BonitaResponse ,BonitaErrorResponse, BonitaSearchParms, 
+  BonitaBpmDataService, BonitaCaseVariable
   } from '../zgwnu2/bonita'
 
 @Component({
@@ -18,12 +18,18 @@ export class TestBpmDataComponent implements OnInit {
   errorResponse: BonitaErrorResponse
 
   // Bpm Data test vars
-  passedTest_BpmData_searchCaseVariable: boolean = false
+  searchParms: BonitaSearchParms = new BonitaSearchParms(0, 1)
+  filters: string[] = ['testCaseVariable']
+  caseVariable: BonitaCaseVariable
+  passedTest_BpmData_searchCaseVariables: boolean = false
+  passedTest_BpmData_getCaseVariable: boolean = false
+
 
   constructor(
     private bpmDataService: BonitaBpmDataService, 
   )
   {
+    this.searchParms.filters = this.filters
   }
 
   ngOnInit():void {
@@ -35,7 +41,19 @@ export class TestBpmDataComponent implements OnInit {
   }
 
   private test_BpmData_searchCaseVariables() {
-    
+    this.bpmDataService.searchCaseVariables(this.searchParms)
+      .subscribe(
+        caseVariables => {
+          this.caseVariable = caseVariables[0]
+          this.passedTest_BpmData_searchCaseVariables
+          // next test in chain (1)
+          this.test_BpmData_getCaseVariable()
+        },
+        errorResponse => this.errorResponse = errorResponse
+      )
+  }
+
+  private test_BpmData_getCaseVariable() {
 
   }
 
