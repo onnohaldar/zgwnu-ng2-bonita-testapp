@@ -11,8 +11,9 @@
         </test-bpm-process>
     </md-card>
 
-    <md-card class="test-item">
-        <test-bpm-activity-task>
+    <md-card *ngIf="testCase.caseId != undefined" class="test-item">
+        <test-bpm-activity-task
+            [testCase]="testCase" >
         </test-bpm-activity-task>
     </md-card>
 

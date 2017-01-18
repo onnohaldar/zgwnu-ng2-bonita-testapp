@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core'
+import {Component, OnInit, Input } from '@angular/core'
 
 import { BonitaResponse ,BonitaErrorResponse, BonitaSearchParms, BonitaConfigService, 
   BonitaBpmActivityService, BonitaActivity,
@@ -7,6 +7,7 @@ import { BonitaResponse ,BonitaErrorResponse, BonitaSearchParms, BonitaConfigSer
   BonitaBpmUserTaskService, BonitaUserTask
   } from '../zgwnu2/bonita'
 
+import { TestCase } from '../test/test-case'
 import { UserTaskContract } from './user-task-contract'
 
 @Component({
@@ -17,14 +18,14 @@ import { UserTaskContract } from './user-task-contract'
 })
 
 export class TestBpmActivityTaskComponent implements OnInit {
+    @Input() testCase: TestCase
 
     // Generic Bonita Rest Api test vars
     response: BonitaResponse
     errorResponse: BonitaErrorResponse
 
     // Generic Activity and Task test vars
-    testSearchParms: BonitaSearchParms = new BonitaSearchParms(0, 1)
-    testFilters: string[] = ['name=User Task']
+    testTaskName: string = 'User Task'
 
     // Activity test vars
     activity: BonitaActivity
@@ -64,7 +65,6 @@ export class TestBpmActivityTaskComponent implements OnInit {
         private configService: BonitaConfigService, 
     )
     {
-        this.testSearchParms.filters = this.testFilters
     }
 
     ngOnInit():void {
@@ -72,11 +72,16 @@ export class TestBpmActivityTaskComponent implements OnInit {
 
         // start testchain
         this.test_BpmActivity_searchActivities()
-
     }
 
     private test_BpmActivity_searchActivities() {
-        this.bpmActivityService.searchActivities(this.testSearchParms)
+        let testSearchParms: BonitaSearchParms = new BonitaSearchParms(0, 1)
+        testSearchParms.filters = [
+            'name=' + this.testTaskName,
+            'parentCaseId=' + this.testCase.caseId
+            ]
+
+        this.bpmActivityService.searchActivities(testSearchParms)
             .subscribe(
                 activities => {
                     this.activity = activities[0]
@@ -102,7 +107,12 @@ export class TestBpmActivityTaskComponent implements OnInit {
     }
 
     private test_BpmHumanTask_searchHumanTasks() {
-        this.bpmHumanTaskService.searchHumanTasks(this.testSearchParms)
+        let testSearchParms: BonitaSearchParms = new BonitaSearchParms(0, 1)
+        testSearchParms.filters = [
+            'name=' + this.testTaskName,
+            ]
+
+        this.bpmHumanTaskService.searchHumanTasks(testSearchParms)
             .subscribe(
                 humanTasks => {
                     console.log(humanTasks)
@@ -129,7 +139,14 @@ export class TestBpmActivityTaskComponent implements OnInit {
     }
 
     private test_BpmTask_searchTasks() {
-        this.bpmTaskService.searchTasks(this.testSearchParms)
+        let testSearchParms: BonitaSearchParms = new BonitaSearchParms(0, 1)
+        testSearchParms.filters = [
+            'name=' + this.testTaskName,
+            'parentCaseId=' + this.testCase.caseId
+            ]
+
+
+        this.bpmTaskService.searchTasks(testSearchParms)
             .subscribe(
                 tasks => {
                     console.log(tasks)
