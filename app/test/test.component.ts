@@ -1,12 +1,13 @@
 import {Component, OnInit} from '@angular/core'
 
 import { BonitaBpmProcessService, BonitaBpmActivityService, BonitaBpmHumanTaskService, BonitaBpmTaskService, 
-  BonitaBpmUserTaskService 
+  BonitaBpmUserTaskService, BonitaBpmDataService
   } from '../zgwnu2/bonita'
 
 import { TestAuthenticationComponent } from '../test-authentication/test-authentication.component'
 import { TestBpmProcessComponent } from '../test-bpm-process/test-bpm-process.component'
 import { TestBpmActivityTaskComponent } from '../test-bpm-activity-task/test-bpm-activity-task.component'
+import { TestBpmDataComponent } from '../test-bpm-data/test-bpm-data.component'
 
 @Component({
   moduleId: module.id,
@@ -24,6 +25,9 @@ import { TestBpmActivityTaskComponent } from '../test-bpm-activity-task/test-bpm
     BonitaBpmTaskService, 
     BonitaBpmUserTaskService, 
     TestBpmActivityTaskComponent, 
+
+    BonitaBpmDataService,
+    TestBpmDataComponent, 
     ]
 })
 
