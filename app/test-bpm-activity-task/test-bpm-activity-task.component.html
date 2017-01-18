@@ -2,7 +2,7 @@
 
 <md-card-subtitle>
     <md-checkbox 
-        [checked]="passedTestBPMActivitySearchActivities"
+        [checked]="passedTest_BpmActivity_searchActivities"
         [disabled]="true" >
     </md-checkbox>
     searchActivities
@@ -13,7 +13,7 @@
 
 <md-card-subtitle>
     <md-checkbox 
-        [checked]="passedTestBPMActivityGetActivity"
+        [checked]="passedTest_BpmActivity_getActivity"
         [disabled]="true" >
     </md-checkbox>
     getActivity
@@ -24,7 +24,7 @@
 
 <md-card-subtitle>
     <md-checkbox 
-        [checked]="passedTestBPMHumanTaskSearchHumanTasks"
+        [checked]="passedTest_BpmHumanTask_searchHumanTasks"
         [disabled]="true" >
     </md-checkbox>
     searchHumanTasks
@@ -35,7 +35,7 @@
 
 <md-card-subtitle>
     <md-checkbox 
-        [checked]="passedTestBPMHumanTaskGetHumanTask"
+        [checked]="passedTest_BpmHumanTask_getHumanTask"
         [disabled]="true" >
     </md-checkbox>
     getHumanTask
@@ -46,7 +46,7 @@
 
 <md-card-subtitle>
     <md-checkbox 
-        [checked]="passedTestBPMTaskSearchTasks"
+        [checked]="passedTest_BpmTask_searchTasks"
         [disabled]="true" >
     </md-checkbox>
     searchTasks
@@ -57,7 +57,7 @@
 
 <md-card-subtitle>
     <md-checkbox 
-        [checked]="passedTestBPMTaskGetTask"
+        [checked]="passedTest_BpmTask_getTask"
         [disabled]="true" >
     </md-checkbox>
     getTask
@@ -68,7 +68,7 @@
 
 <md-card-subtitle>
     <md-checkbox 
-        [checked]="passedTestBPMUserTaskGetUserTask"
+        [checked]="passedTest_BpmUserTask_getUserTask"
         [disabled]="true" >
     </md-checkbox>
     getUserTask
@@ -79,7 +79,7 @@
 
 <md-card-subtitle>
     <md-checkbox 
-        [checked]="passedTestBPMUserTaskGetUserTaskContext"
+        [checked]="passedTest_BpmUserTask_getUserTaskContext"
         [disabled]="true" >
     </md-checkbox>
     getUserTaskContext
@@ -90,11 +90,24 @@
 
 <md-card-subtitle>
     <md-checkbox 
-        [checked]="passedTestBPMUserTaskAssignUserTask"
+        [checked]="passedTest_BpmUserTask_assignUserTask"
         [disabled]="true" >
     </md-checkbox>
     assignUserTask
 </md-card-subtitle>
 <md-card-content>
-    User Task Assign: {{userTask?.name}} => {{assignUserName}} = ({{assignUserTaskResponse | json}})
+    User Task Assign: {{userTask?.name}} => {{assignUserName}}<br>
+    User Task Assign Response: {{assignUserTaskResponse | json}}
+</md-card-content>
+
+<md-card-subtitle>
+    <md-checkbox 
+        [checked]="passedTest_BpmUserTask_executeUserTask"
+        [disabled]="true" >
+    </md-checkbox>
+    executeUserTask
+</md-card-subtitle>
+<md-card-content>
+    User Task Contract: {{userTaskContract | json}}<br>
+    User Task Execution Response: {{errorResponse | json}}
 </md-card-content>

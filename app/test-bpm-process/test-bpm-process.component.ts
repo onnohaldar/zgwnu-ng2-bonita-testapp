@@ -18,15 +18,15 @@ import { Ng2BonitaXrefContract } from './ng2-bonita-xref-contract'
 
 export class TestBpmProcessComponent implements OnInit {
 
-  // generic bonita rest api test vars
+  // Generic Bonita Rest Api test vars
   response: BonitaResponse
   errorResponse: BonitaErrorResponse
 
-  // bpm process test vars
+  // Process test vars
   processDefinition: BonitaProcessDefinition
-  passedTestBPMProcessSearchProcessDefinitions: boolean = false
-  passedTestBPMProcessGetProcessDefinition: boolean = false
-  passedTestBPMProcessCreateCase: boolean = false
+  passedTest_BpmProcess_searchProcessDefinitions: boolean = false
+  passedTest_BpmProcess_getProcessDefinition: boolean = false
+  passedTest_BpmProcess_createCase: boolean = false
   createCaseData: any = {
     masterKey: 'Master1 ',
     masterDate: new Date(2017, 0, 12),
@@ -54,11 +54,11 @@ export class TestBpmProcessComponent implements OnInit {
     console.log('InitTestComponent')
 
     // start testchain
-    this.testBPMProcessSearchProcessDefinitions()
+    this.test_BpmProcess_searchProcessDefinitions()
 
   }
 
-  private testBPMProcessSearchProcessDefinitions() {
+  private test_BpmProcess_searchProcessDefinitions() {
     let bonitaSearchParms: BonitaSearchParms = new BonitaSearchParms(0, 1)
     bonitaSearchParms.filters = ['name=Basic Test', 'version=0.0.1']
 
@@ -66,35 +66,35 @@ export class TestBpmProcessComponent implements OnInit {
       .subscribe(
         processDefinitions => {
           this.processDefinition = processDefinitions[0]
-          this.passedTestBPMProcessSearchProcessDefinitions = true
+          this.passedTest_BpmProcess_searchProcessDefinitions = true
           // next test in chain (2)
-          this.testBPMProcessGetProcessDefinition()
+          this.test_BpmProcess_getProcessDefinition()
         },
         errorResponse => this.errorResponse = errorResponse
       )
   }
 
-  private testBPMProcessGetProcessDefinition() {
+  private test_BpmProcess_getProcessDefinition() {
     this.bpmProcessService.getProcessDefinition(this.processDefinition.id)
       .subscribe(
         processDefinition => {
           this.processDefinition = processDefinition
-          this.passedTestBPMProcessGetProcessDefinition = true
+          this.passedTest_BpmProcess_getProcessDefinition = true
           // next test in chain (3)
-          this.testBPMProcessCreateCase()
+          this.test_BpmProcess_createCase()
         },
         errorResponse => this.errorResponse = errorResponse
       )
   }
   
-  private testBPMProcessCreateCase() {
+  private test_BpmProcess_createCase() {
     let contract: CreateCaseContract = new CreateCaseContract(this.createCaseData)  
     console.log(contract)
     this.bpmProcessService.createCase(this.processDefinition.id, contract)
       .subscribe(
         createCaseSuccessResponse => {
           this.createCaseSuccessResponse = createCaseSuccessResponse
-          this.passedTestBPMProcessCreateCase = true
+          this.passedTest_BpmProcess_createCase = true
         },
         errorResponse => this.errorResponse = errorResponse
       )

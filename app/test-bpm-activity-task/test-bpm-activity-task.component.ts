@@ -7,6 +7,8 @@ import { BonitaResponse ,BonitaErrorResponse, BonitaSearchParms, BonitaConfigSer
   BonitaBpmUserTaskService, BonitaUserTask
   } from '../zgwnu2/bonita'
 
+import { UserTaskContract } from './user-task-contract'
+
 @Component({
   moduleId: module.id,
   selector: 'test-bpm-activity-task',
@@ -16,36 +18,43 @@ import { BonitaResponse ,BonitaErrorResponse, BonitaSearchParms, BonitaConfigSer
 
 export class TestBpmActivityTaskComponent implements OnInit {
 
-    // generic bonita rest api test vars
+    // Generic Bonita Rest Api test vars
     response: BonitaResponse
     errorResponse: BonitaErrorResponse
 
-    // activity test vars
+    // Generic Activity and Task test vars
+    testSearchParms: BonitaSearchParms = new BonitaSearchParms(0, 1)
+    testFilters: string[] = ['name=User Task']
+
+    // Activity test vars
     activity: BonitaActivity
-    passedTestBPMActivitySearchActivities: boolean = false
-    passedTestBPMActivityGetActivity: boolean = false
+    passedTest_BpmActivity_searchActivities: boolean = false
+    passedTest_BpmActivity_getActivity: boolean = false
 
-    // human task test vars
+    // Human Task test vars
     humanTask: BonitaHumanTask
-    passedTestBPMHumanTaskSearchHumanTasks: boolean = false
-    passedTestBPMHumanTaskGetHumanTask: boolean = false
+    passedTest_BpmHumanTask_searchHumanTasks: boolean = false
+    passedTest_BpmHumanTask_getHumanTask: boolean = false
 
-    // task test vars
+    // Task test vars
     task: BonitaTask
-    passedTestBPMTaskSearchTasks: boolean = false
-    passedTestBPMTaskGetTask: boolean = false
+    passedTest_BpmTask_searchTasks: boolean = false
+    passedTest_BpmTask_getTask: boolean = false
 
-    // user task test vars
-    userTask: BonitaTask
-    passedTestBPMUserTaskGetUserTask: boolean = false
+    // User Task test vars
+    userTask: BonitaUserTask
+    passedTest_BpmUserTask_getUserTask: boolean = false
 
     userTaskContext: any
-    passedTestBPMUserTaskGetUserTaskContext: boolean = false
+    passedTest_BpmUserTask_getUserTaskContext: boolean = false
 
     assignUserName: string
     assignUserTaskResponse: BonitaResponse
-    passedTestBPMUserTaskAssignUserTask: boolean = false
+    passedTest_BpmUserTask_assignUserTask: boolean = false
 
+    userTaskContract: UserTaskContract = new UserTaskContract('User Task Input')
+    executeUserTaskResponse: BonitaResponse
+    passedTest_BpmUserTask_executeUserTask: boolean = false
 
     constructor(
         private bpmActivityService: BonitaBpmActivityService, 
@@ -55,141 +64,146 @@ export class TestBpmActivityTaskComponent implements OnInit {
         private configService: BonitaConfigService, 
     )
     {
+        this.testSearchParms.filters = this.testFilters
     }
 
     ngOnInit():void {
         console.log('InitTestBpmActivityTaskComponent')
 
         // start testchain
-        this.bpmActivitySearchActivities()
+        this.test_BpmActivity_searchActivities()
 
     }
 
-    private bpmActivitySearchActivities() {
-        let bonitaSearchParms: BonitaSearchParms = new BonitaSearchParms(0, 1)
-        bonitaSearchParms.filters = ['name=Change Data Task']
-
-        this.bpmActivityService.searchActivities(bonitaSearchParms)
+    private test_BpmActivity_searchActivities() {
+        this.bpmActivityService.searchActivities(this.testSearchParms)
             .subscribe(
                 activities => {
                     this.activity = activities[0]
-                    this.passedTestBPMActivitySearchActivities = true
+                    this.passedTest_BpmActivity_searchActivities = true
                     // next test in chain (1)
-                    this.bpmActivityGetActivity()
+                    this.test_BpmActivity_getActivity()
                 },
                 errorResponse => this.errorResponse = errorResponse
             )
     }
 
-    private bpmActivityGetActivity() {
+    private test_BpmActivity_getActivity() {
         this.bpmActivityService.getActivity(this.activity.id)
             .subscribe(
                 activity => {
                     this.activity = activity
-                    this.passedTestBPMActivityGetActivity = true
+                    this.passedTest_BpmActivity_getActivity = true
                     // next test in chain (2)
-                    this.bpmHumanTaskSearchHumanTasks()
+                    this.test_BpmHumanTask_searchHumanTasks()
                 },
                 errorResponse => this.errorResponse
             )
     }
 
-    private bpmHumanTaskSearchHumanTasks() {
-        let bonitaSearchParms: BonitaSearchParms = new BonitaSearchParms(0, 1)
-        bonitaSearchParms.filters = ['name=Change Data Task']
-
-        this.bpmHumanTaskService.searchHumanTasks(bonitaSearchParms)
+    private test_BpmHumanTask_searchHumanTasks() {
+        this.bpmHumanTaskService.searchHumanTasks(this.testSearchParms)
             .subscribe(
                 humanTasks => {
                     console.log(humanTasks)
                     this.humanTask = humanTasks[0]
-                    this.passedTestBPMHumanTaskSearchHumanTasks = true
+                    this.passedTest_BpmHumanTask_searchHumanTasks = true
                     // next test in chain (3)
-                    this.bpmHumanTaskGetHumanTask()
+                    this.test_BpmHumanTask_getHumanTask()
                 },
                 errorResponse => this.errorResponse = errorResponse
             )
     }
 
-    private bpmHumanTaskGetHumanTask() {
+    private test_BpmHumanTask_getHumanTask() {
         this.bpmHumanTaskService.getHumanTask(this.humanTask.id)
             .subscribe(
                 humanTask => {
                     this.humanTask = humanTask
-                    this.passedTestBPMHumanTaskGetHumanTask = true
+                    this.passedTest_BpmHumanTask_getHumanTask = true
                     // next test in chain (4)
-                    this.bpmTaskSearchTasks()
+                    this.test_BpmTask_searchTasks()
                 },
                 errorResponse => this.errorResponse
             )
     }
 
-    private bpmTaskSearchTasks() {
-        let bonitaSearchParms: BonitaSearchParms = new BonitaSearchParms(0, 1)
-        bonitaSearchParms.filters = ['name=Change Data Task']
-
-        this.bpmTaskService.searchTasks(bonitaSearchParms)
+    private test_BpmTask_searchTasks() {
+        this.bpmTaskService.searchTasks(this.testSearchParms)
             .subscribe(
                 tasks => {
                     console.log(tasks)
                     this.task = tasks[0]
-                    this.passedTestBPMTaskSearchTasks = true
+                    this.passedTest_BpmTask_searchTasks = true
                     // next test in chain (3)
-                    this.bpmTaskGetTask()
+                    this.test_BpmTask_getTask()
                 },
                 errorResponse => this.errorResponse = errorResponse
             )
     }
 
-    private bpmTaskGetTask() {
+    private test_BpmTask_getTask() {
         this.bpmTaskService.getTask(this.task.id)
             .subscribe(
                 task => {
                     this.task = task
-                    this.passedTestBPMTaskGetTask = true
+                    this.passedTest_BpmTask_getTask = true
                     // next test in chain (4)
-                    this.bpmUserTaskGetUserTask()
+                    this.test_BpmUserTaskGetUserTask()
                 },
-                errorResponse => this.errorResponse
+                errorResponse => this.errorResponse = errorResponse
             )
     }
 
-    private bpmUserTaskGetUserTask() {
+    private test_BpmUserTaskGetUserTask() {
         this.bpmUserTaskService.getUserTask(this.task.id)
             .subscribe(
                 userTask => {
                     this.userTask = userTask
-                    this.passedTestBPMUserTaskGetUserTask = true
+                    this.passedTest_BpmUserTask_getUserTask = true
                     // next test in chain (4)
-                    this.bpmUserTaskGetUserTaskContext()
+                    this.test_BpmUserTask_getUserTaskContext()
                 },
-                errorResponse => this.errorResponse
+                errorResponse => this.errorResponse = errorResponse
             )
     }
 
-    private bpmUserTaskGetUserTaskContext() {
+    private test_BpmUserTask_getUserTaskContext() {
         this.bpmUserTaskService.getUserTaskContext(this.userTask.id)
             .subscribe(
                 userTaskContext => {
                     this.userTaskContext = userTaskContext
-                    this.passedTestBPMUserTaskGetUserTaskContext = true
+                    this.passedTest_BpmUserTask_getUserTaskContext = true
                     // next test in chain (5)
-                    this.bpmUserTaskAssignUserTask()
+                    this.test_BpmUserTask_assignUserTask()
                 },
-                errorResponse => this.errorResponse
+                errorResponse => this.errorResponse = errorResponse
             )
     }
 
-    private bpmUserTaskAssignUserTask() {
+    private test_BpmUserTask_assignUserTask() {
         this.bpmUserTaskService.assignUserTask(this.userTask.id, this.configService.session.user_id)
             .subscribe(
                 response => {
                     this.assignUserTaskResponse = response
                     this.assignUserName = this.configService.session.user_name
-                    this.passedTestBPMUserTaskAssignUserTask = true
+                    this.passedTest_BpmUserTask_assignUserTask = true
                     // next test in chain (6)
+                    this.test_BpmUserTask_executeUserTask()
+                },
+                errorResponse => this.errorResponse = errorResponse
+            )
+    }
 
-                }
+    private test_BpmUserTask_executeUserTask() {
+        this.bpmUserTaskService.executeUserTask(this.userTask.id, this.userTaskContract)
+            .subscribe(
+                response => {
+                    this.executeUserTaskResponse = response
+                    this.passedTest_BpmUserTask_executeUserTask = true
+                    // next test in chain (6)
+                },
+                errorResponse => this.errorResponse = errorResponse
             )
     }
 
