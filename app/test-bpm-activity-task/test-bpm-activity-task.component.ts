@@ -145,7 +145,6 @@ export class TestBpmActivityTaskComponent implements OnInit {
             'parentCaseId=' + this.testCase.caseId
             ]
 
-
         this.bpmTaskService.searchTasks(testSearchParms)
             .subscribe(
                 tasks => {

@@ -11,3 +11,16 @@
     Case Variable Name: {{caseVariable?.name}}<br>
     Case Variable Case Id: {{caseVariable?.case_id}}
 </md-card-content>
+
+<md-card-subtitle>
+    <md-checkbox 
+        [checked]="passedTest_BpmData_getCaseVariable"
+        [disabled]="true" >
+    </md-checkbox>
+    getCaseVariable
+</md-card-subtitle>
+<md-card-content>
+    Case Variable Name: {{caseVariable?.name}} <br>
+    Case Variable Type: {{caseVariable?.type}} <br>
+    Case Variable Value: {{caseVariable?.value}}
+</md-card-content>
