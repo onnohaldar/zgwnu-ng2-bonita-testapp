@@ -2,6 +2,10 @@ import { BonitaBusinessDataObject } from '../zgwnu2/bonita'
 
 export class Ng2BonitaXrefData {
 
-    xrefKey: string
+    constructor(xrefData: any) {
+        this.xrefKey = xrefData.xrefKey
+    }
+
+    xrefKey: String
     
 }

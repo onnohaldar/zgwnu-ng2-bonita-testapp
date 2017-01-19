@@ -1,10 +1,12 @@
 import {Component, OnInit, Input } from '@angular/core'
 
-import { BonitaResponse ,BonitaErrorResponse, BonitaSearchParms, 
+import { BonitaResponse ,BonitaErrorResponse, BonitaSearchParms, BonitaDataMappingInterface, 
   BonitaBusinessDataService, BonitaBusinessDataContext, BonitaBusinessDataQueryParms
   } from '../zgwnu2/bonita'
 
 import { TestCase } from '../test/test-case'
+import { Ng2BonitaMasterData } from './ng2-bonita-master-data'
+import { Ng2BonitaMasterDataMapping } from './ng2-bonita-master-data-mapping'
 
 @Component({
   moduleId: module.id,
@@ -21,7 +23,14 @@ export class TestBusinessDataComponent implements OnInit {
   errorResponse: BonitaErrorResponse
 
   // Business Data test vars
+  objectType: string = 'Ng2BonitaMaster'
+  queryName = 'findByMasterText'
+  parameterValue: string = 'masterText=This is a test Text for zgwnu-ng2-bonita-testapp'
+  dataQueryParms: BonitaBusinessDataQueryParms = new BonitaBusinessDataQueryParms(this.queryName, 0, 1, [this.parameterValue])
+  masterDataMapping: BonitaDataMappingInterface = new Ng2BonitaMasterDataMapping()
+  masterDataObject: Ng2BonitaMasterData
   passedTest_BusinessData_queryBusinessData: boolean = false
+
   passedTest_BusinessData_getBusinessData: boolean = false
 
   constructor(
@@ -39,7 +48,14 @@ export class TestBusinessDataComponent implements OnInit {
   }
 
   private test_BusinessData_queryBusinessData() {
-    let testQueryParms: BonitaBusinessDataQueryParms = new BonitaBusinessDataQueryParms('findByKey', 0, 1, ['key=A1'])
+    this.businessDataService.queryBusinessData(this.objectType, this.dataQueryParms, this.masterDataMapping)
+      .subscribe(
+        masterDataObjects => {
+          this.masterDataObject = masterDataObjects[0]
+          this.passedTest_BusinessData_queryBusinessData = true
+        },
+        errorResponse => this.errorResponse = errorResponse
+      )
 
   }
 
