@@ -23,8 +23,10 @@
         </test-bpm-data>
     </md-card>
 
-    <md-card class="test-item">
-        <md-card-title>Bonita BPM Business Data</md-card-title>
+    <md-card *ngIf="testCase.businessDataContext != undefined" class="test-item">
+        <test-business-data
+            [testCase]="testCase" >
+        </test-business-data>
     </md-card>
 
     <md-card class="test-item">

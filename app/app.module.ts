@@ -22,6 +22,7 @@ import { TestAuthenticationComponent } from './test-authentication/test-authenti
 import { TestBpmProcessComponent } from './test-bpm-process/test-bpm-process.component'
 import { TestBpmActivityTaskComponent } from './test-bpm-activity-task/test-bpm-activity-task.component'
 import { TestBpmDataComponent } from './test-bpm-data/test-bpm-data.component'
+import { TestBusinessDataComponent } from './test-business-data/test-business-data.component'
 
 // application service providers
 import { BonitaConfigService, BonitaFileUploadService } from './zgwnu2/bonita'
@@ -48,6 +49,7 @@ import { BonitaConfigService, BonitaFileUploadService } from './zgwnu2/bonita'
     TestBpmProcessComponent, 
     TestBpmActivityTaskComponent, 
     TestBpmDataComponent, 
+    TestBusinessDataComponent, 
    ],
   // globaly used providers (services)
   providers: [ 

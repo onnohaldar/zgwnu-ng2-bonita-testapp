@@ -4,7 +4,8 @@ import { BonitaResponse ,BonitaErrorResponse, BonitaSearchParms, BonitaConfigSer
   BonitaBpmActivityService, BonitaActivity,
   BonitaBpmHumanTaskService, BonitaHumanTask, 
   BonitaBpmTaskService, BonitaTask, 
-  BonitaBpmUserTaskService, BonitaUserTask
+  BonitaBpmUserTaskService, BonitaUserTask, 
+  BonitaBusinessDataContext
   } from '../zgwnu2/bonita'
 
 import { TestCase } from '../test/test-case'
@@ -190,6 +191,8 @@ export class TestBpmActivityTaskComponent implements OnInit {
                 userTaskContext => {
                     this.userTaskContext = userTaskContext
                     this.passedTest_BpmUserTask_getUserTaskContext = true
+                    // store business data context for business data tests
+                    this.testCase.businessDataContext = new BonitaBusinessDataContext(userTaskContext.ng2bonitaData_ref)
                     // next test in chain (5)
                     this.test_BpmUserTask_assignUserTask()
                 },
