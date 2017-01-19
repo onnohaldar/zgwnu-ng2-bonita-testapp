@@ -4,7 +4,7 @@ export class Ng2BonitaMasterData {
 
     constructor(masterData: any) {
         this.masterKey = masterData.masterKey
-        this.masterDate = masterData.masterDate
+        this.masterDate = new Date(masterData.masterDate)
         for (let detail of masterData.details) {
             this.details.push(new Ng2BonitaDetailData(detail))
         }

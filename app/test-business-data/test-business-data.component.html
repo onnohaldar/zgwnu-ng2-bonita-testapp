@@ -7,9 +7,24 @@
     </md-checkbox>
     queryBusinessData
 </md-card-subtitle>
-    Master Data Object: {{masterDataObject | json}} {{errorResponse | json}}
-<md-card-content>
+<md-card-content *ngIf="masterDataObject != undefined">
+    masterKey: {{masterDataObject.masterKey}}<br>
+    masterDate: {{masterDataObject.masterDate}}<br>
+    
+    <md-list >
+       <md-list-item *ngFor="let detail of masterDataObject.details; let i = index;" > 
+           {{detail.detailKey}}<br>
+           {{detail.xref.xrefKey}}
+       </md-list-item>
+    </md-list>
 
+    masterBoolean: {{masterDataObject.masterBoolean}}<br>
+    masterDouble: {{masterDataObject.masterDouble}}<br>
+    masterDouble: {{masterDataObject.masterDouble}}<br>
+    masterFloat: {{masterDataObject.masterFloat}}<br>
+    masterInteger: {{masterDataObject.masterInteger}}<br>
+    masterLong: {{masterDataObject.masterLong}}<br>
+    masterText: {{masterDataObject.masterText}}<br>
 </md-card-content>
 
 <md-card-subtitle>
