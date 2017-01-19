@@ -7,33 +7,45 @@
     </md-checkbox>
     queryBusinessData
 </md-card-subtitle>
-<md-card-content *ngIf="masterDataObject != undefined">
-    masterKey: {{masterDataObject.masterKey}}<br>
-    masterDate: {{masterDataObject.masterDate}}<br>
+<md-card-content *ngIf="queryMasterDataObject != undefined">
+    masterKey: {{queryMasterDataObject.masterKey}}<br>
+    masterDate: {{queryMasterDataObject.masterDate}}<br>
     
     <md-list >
-       <md-list-item *ngFor="let detail of masterDataObject.details; let i = index;" > 
-           {{detail.detailKey}}<br>
-           {{detail.xref.xrefKey}}
+       <md-list-item *ngFor="let detail of queryMasterDataObject.details; let i = index;" > 
+           detailKey: {{detail.detailKey}}<br>
+           xrefKey: {{detail.xref.xrefKey}}
        </md-list-item>
     </md-list>
 
-    masterBoolean: {{masterDataObject.masterBoolean}}<br>
-    masterDouble: {{masterDataObject.masterDouble}}<br>
-    masterDouble: {{masterDataObject.masterDouble}}<br>
-    masterFloat: {{masterDataObject.masterFloat}}<br>
-    masterInteger: {{masterDataObject.masterInteger}}<br>
-    masterLong: {{masterDataObject.masterLong}}<br>
-    masterText: {{masterDataObject.masterText}}<br>
+    masterBoolean: {{queryMasterDataObject.masterBoolean}}<br>
+    masterDouble: {{queryMasterDataObject.masterDouble}}<br>
+    masterFloat: {{queryMasterDataObject.masterFloat}}<br>
+    masterInteger: {{queryMasterDataObject.masterInteger}}<br>
+    masterLong: {{queryMasterDataObject.masterLong}}<br>
+    masterText: {{queryMasterDataObject.masterText}}<br>
 </md-card-content>
 
 <md-card-subtitle>
     <md-checkbox 
-        [checked]="passedTest_BpmData_getCaseVariable"
+        [checked]="passedTest_BusinessData_getBusinessData"
         [disabled]="true" >
     </md-checkbox>
-    getCaseVariable
+    getBusinessData
 </md-card-subtitle>
 <md-card-content>
+    persistenceId: {{getMasterDataObject?.persistenceId}}<br>
+    persistenceVersion: {{getMasterDataObject?.persistenceVersion}}
+</md-card-content>
 
+<md-card-subtitle>
+    <md-checkbox 
+        [checked]="passedTest_BusinessData_getBusinessDataFromContext"
+        [disabled]="true" >
+    </md-checkbox>
+    getBusinessData
+</md-card-subtitle>
+<md-card-content>
+    persistenceId: {{contextMasterDataObject?.persistenceId}}<br>
+    persistenceVersion: {{contextMasterDataObject?.persistenceVersion}}
 </md-card-content>

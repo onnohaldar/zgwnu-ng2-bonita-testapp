@@ -1,8 +1,12 @@
+import { BonitaBusinessDataObject } from '../zgwnu2/bonita'
+
 import { Ng2BonitaDetailData } from './ng2-bonita-detail-data'
 
-export class Ng2BonitaMasterData {
+export class Ng2BonitaMasterData extends BonitaBusinessDataObject {
 
-    constructor(masterData: any) {
+    constructor(masterData: any) 
+    {
+        super(masterData)
         this.masterKey = masterData.masterKey
         this.masterDate = new Date(masterData.masterDate)
         for (let detail of masterData.details) {

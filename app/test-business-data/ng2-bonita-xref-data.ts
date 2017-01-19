@@ -1,8 +1,10 @@
 import { BonitaBusinessDataObject } from '../zgwnu2/bonita'
 
-export class Ng2BonitaXrefData {
+export class Ng2BonitaXrefData extends BonitaBusinessDataObject {
 
-    constructor(xrefData: any) {
+    constructor(xrefData: any) 
+    {
+        super(xrefData)
         this.xrefKey = xrefData.xrefKey
     }
 

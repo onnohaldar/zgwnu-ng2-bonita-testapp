@@ -28,10 +28,14 @@ export class TestBusinessDataComponent implements OnInit {
   parameterValue: string = 'masterText=This is a test Text for zgwnu-ng2-bonita-testapp'
   dataQueryParms: BonitaBusinessDataQueryParms = new BonitaBusinessDataQueryParms(this.queryName, 0, 1, [this.parameterValue])
   masterDataMapping: BonitaDataMappingInterface = new Ng2BonitaMasterDataMapping()
-  masterDataObject: Ng2BonitaMasterData
+  queryMasterDataObject: Ng2BonitaMasterData
   passedTest_BusinessData_queryBusinessData: boolean = false
 
+  getMasterDataObject: Ng2BonitaMasterData
   passedTest_BusinessData_getBusinessData: boolean = false
+
+  contextMasterDataObject: Ng2BonitaMasterData
+  passedTest_BusinessData_getBusinessDataFromContext: boolean = false
 
   constructor(
     private businessDataService: BonitaBusinessDataService, 
@@ -51,16 +55,40 @@ export class TestBusinessDataComponent implements OnInit {
     this.businessDataService.queryBusinessData(this.objectType, this.dataQueryParms, this.masterDataMapping)
       .subscribe(
         masterDataObjects => {
-          this.masterDataObject = masterDataObjects[0]
+          this.queryMasterDataObject = masterDataObjects[0]
           this.passedTest_BusinessData_queryBusinessData = true
+          // next test in chain (1)
+          this.test_BusinessData_getBusinessData()
         },
         errorResponse => this.errorResponse = errorResponse
       )
-
   }
 
   private test_BusinessData_getBusinessData() {
+    this.businessDataService.getBusinessData(
+      this.objectType, this.queryMasterDataObject.persistenceId, this.masterDataMapping)
+        .subscribe(
+          masterDataObject => {
+            this.getMasterDataObject = masterDataObject
+            this.passedTest_BusinessData_getBusinessData = true
+            // next test in chain (2)
+            this.test_BusinessData_getBusinessDataFromContext()
+          },
+          errorResponse => this.errorResponse = errorResponse
+        )
+  }
 
+  private test_BusinessData_getBusinessDataFromContext() {
+    this.businessDataService.getBusinessDataFromContext(this.testCase.businessDataContext, this.masterDataMapping)
+        .subscribe(
+          masterDataObject => {
+            this.contextMasterDataObject = masterDataObject
+            this.passedTest_BusinessData_getBusinessDataFromContext = true
+            // next test in chain (3)
+            
+          },
+          errorResponse => this.errorResponse = errorResponse
+        )
   }
 
 }
