@@ -29,8 +29,10 @@
         </test-business-data>
     </md-card>
 
-    <md-card class="test-item">
-        <md-card-title>Bonita File Upload</md-card-title>
+    <md-card *ngIf="testCase.caseId != undefined" class="test-item">
+        <test-file-upload
+            [testCase]="testCase" >
+        </test-file-upload>
     </md-card>
 
 </div>

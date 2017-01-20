@@ -10,6 +10,7 @@ import { TestBpmProcessComponent } from '../test-bpm-process/test-bpm-process.co
 import { TestBpmActivityTaskComponent } from '../test-bpm-activity-task/test-bpm-activity-task.component'
 import { TestBpmDataComponent } from '../test-bpm-data/test-bpm-data.component'
 import { TestBusinessDataComponent } from '../test-business-data/test-business-data.component'
+import { TestFileUploadComponent } from '../test-file-upload/test-file-upload.component'
 
 @Component({
   moduleId: module.id,
@@ -33,6 +34,8 @@ import { TestBusinessDataComponent } from '../test-business-data/test-business-d
 
     BonitaBusinessDataService, 
     TestBusinessDataComponent, 
+
+    TestFileUploadComponent, 
     ]
 })
 

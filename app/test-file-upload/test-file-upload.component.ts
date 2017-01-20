@@ -1,4 +1,6 @@
-import {Component, OnInit, Input } from '@angular/core'
+import {Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core'
+
+import {Observable} from 'rxjs/Observable'
 
 import { BonitaResponse ,BonitaErrorResponse, 
   BonitaFileUploadService, BonitaFileUploadResponse, BonitaContractInputFile, BonitaFileUploadComponent
@@ -8,15 +10,15 @@ import { TestCase } from '../test/test-case'
 
 @Component({
   moduleId: module.id,
-  selector: 'test-bpm-data',
-  templateUrl: 'test-bpm-data.component.html',
-  styleUrls: [ 'test-bpm-data.component.css' ], 
-  providers: [
+  selector: 'test-file-upload',
+  templateUrl: 'test-file-upload.component.html',
+  styleUrls: [ 'test-file-upload.component.css' ], 
+  providers: [ 
       BonitaFileUploadComponent, 
   ]
 })
 
-export class TestFileUploadComponent implements OnInit {
+export class TestFileUploadComponent implements OnInit, OnChanges {
   @Input() testCase: TestCase
 
   // generic bonita rest api test vars
@@ -24,7 +26,9 @@ export class TestFileUploadComponent implements OnInit {
   errorResponse: BonitaErrorResponse
 
   // File Upload test vars
+  contractInputFile: BonitaContractInputFile
 
+  passedTest_FileUploadComponent: boolean = false
 
   constructor(
     private fileUploadService: BonitaFileUploadService, 
@@ -32,15 +36,21 @@ export class TestFileUploadComponent implements OnInit {
   {
   }
 
-  ngOnInit():void {
-    console.log('Init TestBpmDataComponent')
+  ngOnInit() {
+    console.log('Init TestFileUploadComponent')
 
     // start testchain
-    this.test_BpmData_searchCaseVariables()
+    this.test__FileUploadComponent()
 
   }
 
-  private test_BpmData_searchCaseVariables() {
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes)
+
+  }
+
+  private test__FileUploadComponent() {
+
   }
 
 }

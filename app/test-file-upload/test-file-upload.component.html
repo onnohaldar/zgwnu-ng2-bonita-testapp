@@ -1,0 +1,18 @@
+<md-card-title>Bonita File Upload</md-card-title>
+
+<md-card-subtitle>
+    <md-checkbox 
+        [checked]="passedTest_FileUploadComponent"
+        [disabled]="true" >
+    </md-checkbox>
+    FileUploadComponent
+</md-card-subtitle>
+<md-card-content *ngIf="!passedTest_FileUploadComponent">
+    <bonita-file-upload>
+        [contractInputFile]="contractInputFile" >
+    </bonita-file-upload>
+    Press upload file button and select a PDF file...
+</md-card-content>
+<md-card-content *ngIf="passedTest_FileUploadComponent">
+    {{contractInputFile | json}}
+</md-card-content>
