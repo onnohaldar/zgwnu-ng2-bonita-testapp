@@ -8,11 +8,14 @@
     FileUploadComponent
 </md-card-subtitle>
 <md-card-content *ngIf="!passedTest_FileUploadComponent">
-    <bonita-file-upload>
-        [contractInputFile]="contractInputFile" >
+    <bonita-file-upload
+        [contractInputFile]="contractInputFile" 
+        (onFileSelected)="test__FileUploadComponent($event)" >
     </bonita-file-upload>
     Press upload file button and select a PDF file...
 </md-card-content>
 <md-card-content *ngIf="passedTest_FileUploadComponent">
-    {{contractInputFile | json}}
+    filename: {{contractInputFile.filename}}<br>
+    contentType: {{contractInputFile.contentType}}<br>
+    tempPath: {{contractInputFile.tempPath}}
 </md-card-content>

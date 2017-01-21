@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core'
+import {Component, OnInit, Input } from '@angular/core'
 
 import {Observable} from 'rxjs/Observable'
 
@@ -18,7 +18,7 @@ import { TestCase } from '../test/test-case'
   ]
 })
 
-export class TestFileUploadComponent implements OnInit, OnChanges {
+export class TestFileUploadComponent implements OnInit {
   @Input() testCase: TestCase
 
   // generic bonita rest api test vars
@@ -26,8 +26,7 @@ export class TestFileUploadComponent implements OnInit, OnChanges {
   errorResponse: BonitaErrorResponse
 
   // File Upload test vars
-  contractInputFile: BonitaContractInputFile
-
+  contractInputFile: BonitaContractInputFile = new BonitaContractInputFile()
   passedTest_FileUploadComponent: boolean = false
 
   constructor(
@@ -39,18 +38,10 @@ export class TestFileUploadComponent implements OnInit, OnChanges {
   ngOnInit() {
     console.log('Init TestFileUploadComponent')
 
-    // start testchain
-    this.test__FileUploadComponent()
-
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    console.log(changes)
-
-  }
-
-  private test__FileUploadComponent() {
-
+  private test__FileUploadComponent(outputFile: BonitaContractInputFile) {
+    if (outputFile.tempPath) { this.passedTest_FileUploadComponent = true }
   }
 
 }
