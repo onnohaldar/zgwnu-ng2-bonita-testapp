@@ -19,3 +19,15 @@
     contentType: {{contractInputFile.contentType}}<br>
     tempPath: {{contractInputFile.tempPath}}
 </md-card-content>
+
+<md-card-subtitle>
+    <md-checkbox 
+        [checked]="passedTest_FileUploadTask"
+        [disabled]="true" >
+    </md-checkbox>
+    File Upload Task
+</md-card-subtitle>
+<md-card-content *ngIf="passedTest_FileUploadTask">
+    Contract Input: {{fileUploadContract | json }}<br>
+    Response: {{response | json}}
+</md-card-content>
