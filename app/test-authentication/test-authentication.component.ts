@@ -1,8 +1,10 @@
-import {Component, OnInit} from '@angular/core'
+import {Component, OnInit, Input } from '@angular/core'
 
 import { BonitaResponse ,BonitaErrorResponse, BonitaConfigService, 
   BonitaAuthenticationService, BonitaSession
   } from '../zgwnu2/bonita'
+
+import { TestCase } from '../test/test-case'
 
 @Component({
   moduleId: module.id,
@@ -12,6 +14,7 @@ import { BonitaResponse ,BonitaErrorResponse, BonitaConfigService,
 })
 
 export class TestAuthenticationComponent implements OnInit {
+  @Input() testCase: TestCase
 
   // generic bonita rest api test vars
   response: BonitaResponse
@@ -39,20 +42,22 @@ export class TestAuthenticationComponent implements OnInit {
   private testAuthenticationGetSession() {
     
     if (this.configService.session) {
-      // session available in config (initial loaded webapp)
+      console.log('session available in config (initial loaded webapp)')
       this.session = this.configService.session
       this.passedTestAuthenticationSession = true
+      this.testCase.isAuthorized = true
       // next test in chain (1)
       // PM
     } 
     else {
-      // session is-not available (after reload webapp)
+      console.log('session is-not available (after reload webapp)')
       this.authenticationService.getSession()
         .subscribe(
           session => {
             this.session = session
             this.configService.session = session
             this.passedTestAuthenticationSession = true
+            this.testCase.isAuthorized = true
             // next test in chain (1)
             // PM  
           }

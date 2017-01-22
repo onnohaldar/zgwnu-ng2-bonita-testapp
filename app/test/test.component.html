@@ -1,11 +1,12 @@
 <div class="test-container">
 
     <md-card class="test-item">
-        <test-authentication>
+        <test-authentication
+            [testCase]="testCase" >
         </test-authentication>
     </md-card>
 
-    <md-card class="test-item">
+    <md-card *ngIf="testCase.isAuthorized" class="test-item">
         <test-bpm-process
             [testCase]="testCase" >
         </test-bpm-process>
