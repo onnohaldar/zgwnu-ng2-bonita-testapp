@@ -60,9 +60,6 @@ export class AppComponent {
     mdIconRegistry.addSvgIconInNamespace('navigation', 'cancel_24px', 
       sanitizer.bypassSecurityTrustResourceUrl(this.navigationIconsPath + 'ic_cancel_24px.svg'))
 
-    // initialize Bonita Configuration (url's...)
-    bonitaConfigService.initBonitaConfig()
-
   }
 
   onToolbarClickMenu() {

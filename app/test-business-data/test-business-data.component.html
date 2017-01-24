@@ -35,7 +35,8 @@
 </md-card-subtitle>
 <md-card-content>
     persistenceId: {{getMasterDataObject?.persistenceId}}<br>
-    persistenceVersion: {{getMasterDataObject?.persistenceVersion}}
+    persistenceVersion: {{getMasterDataObject?.persistenceVersion}}<br>
+    masterKey: {{getMasterDataObject?.masterKey}}<br>
 </md-card-content>
 
 <md-card-subtitle>
@@ -43,9 +44,10 @@
         [checked]="passedTest_BusinessData_getBusinessDataFromContext"
         [disabled]="true" >
     </md-checkbox>
-    getBusinessData
+    getBusinessDataFromContext
 </md-card-subtitle>
 <md-card-content>
     persistenceId: {{contextMasterDataObject?.persistenceId}}<br>
-    persistenceVersion: {{contextMasterDataObject?.persistenceVersion}}
+    persistenceVersion: {{contextMasterDataObject?.persistenceVersion}}<br>
+    masterKey: {{contextMasterDataObject?.masterKey}}<br>
 </md-card-content>

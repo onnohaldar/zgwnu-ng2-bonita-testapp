@@ -16,8 +16,9 @@ import { FileUploadContract } from './file-upload-contract'
   selector: 'test-file-upload',
   templateUrl: 'test-file-upload.component.html',
   styleUrls: [ 'test-file-upload.component.css' ], 
-  providers: [ 
-      BonitaFileUploadComponent, 
+  providers: [  
+      BonitaFileUploadComponent,
+
   ]
 })
 

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core'
 
 import { BonitaBpmProcessService, BonitaBpmActivityService, BonitaBpmHumanTaskService, BonitaBpmTaskService, 
-  BonitaBpmUserTaskService, BonitaBpmDataService, BonitaBusinessDataService
+  BonitaBpmUserTaskService, BonitaBpmDataService, BonitaBusinessDataService, BonitaFileUploadService
   } from '../zgwnu2/bonita'
 
 import { TestCase } from './test-case'
@@ -35,6 +35,7 @@ import { TestFileUploadComponent } from '../test-file-upload/test-file-upload.co
     BonitaBusinessDataService, 
     TestBusinessDataComponent, 
 
+    BonitaFileUploadService, 
     TestFileUploadComponent, 
     ]
 })

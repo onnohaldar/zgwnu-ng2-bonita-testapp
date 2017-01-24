@@ -26,7 +26,7 @@ import { TestBusinessDataComponent } from './test-business-data/test-business-da
 import { TestFileUploadComponent } from './test-file-upload/test-file-upload.component'
 
 // application service providers
-import { BonitaConfigService, BonitaFileUploadService } from './zgwnu2/bonita'
+import { BonitaConfigService } from './zgwnu2/bonita'
 
 // angular metadata for app module 
 @NgModule({
@@ -56,7 +56,6 @@ import { BonitaConfigService, BonitaFileUploadService } from './zgwnu2/bonita'
   // globaly used providers (services)
   providers: [ 
     BonitaConfigService,
-    BonitaFileUploadService, 
     ], 
   // start-up with components and services
   bootstrap: [ AppComponent ]
