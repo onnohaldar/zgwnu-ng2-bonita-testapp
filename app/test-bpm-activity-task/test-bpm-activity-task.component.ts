@@ -51,8 +51,11 @@ export class TestBpmActivityTaskComponent implements OnInit {
     passedTest_BpmUserTask_getUserTaskContext: boolean = false
 
     assignUserName: string
-    assignUserTaskResponse: BonitaResponse
-    passedTest_BpmUserTask_assignUserTask: boolean = false
+    assignUserTask_ToSpecificUser_Response: BonitaResponse
+    passedTest_BpmUserTask_assignUserTask_ToSpecificUser: boolean = false
+
+    assignUserTask_ToCurrentUser_Response: BonitaResponse
+    passedTest_BpmUserTask_assignUserTask_ToCurrentUser: boolean = false
 
     userTaskContract: UserTaskContract = new UserTaskContract('User Task Input')
     executeUserTaskResponse: BonitaResponse
@@ -194,20 +197,33 @@ export class TestBpmActivityTaskComponent implements OnInit {
                     // store business data context for business data tests
                     this.testCase.businessDataContext = new BonitaBusinessDataContext(userTaskContext.ng2bonitaData_ref)
                     // next test in chain (5)
-                    this.test_BpmUserTask_assignUserTask()
+                    this.test_BpmUserTask_assignUserTask_ToSpecificUser()
                 },
                 errorResponse => this.errorResponse = errorResponse
             )
     }
 
-    private test_BpmUserTask_assignUserTask() {
+    private test_BpmUserTask_assignUserTask_ToSpecificUser() {
         this.bpmUserTaskService.assignUserTask(this.userTask.id, this.configService.session.user_id)
             .subscribe(
                 response => {
-                    this.assignUserTaskResponse = response
+                    this.assignUserTask_ToSpecificUser_Response = response
                     this.assignUserName = this.configService.session.user_name
-                    this.passedTest_BpmUserTask_assignUserTask = true
+                    this.passedTest_BpmUserTask_assignUserTask_ToSpecificUser = true
                     // next test in chain (6)
+                    this.test_BpmUserTask_assignUserTask_ToCurrentUser()
+                },
+                errorResponse => this.errorResponse = errorResponse
+            )
+    }
+
+    private test_BpmUserTask_assignUserTask_ToCurrentUser() {
+        this.bpmUserTaskService.assignUserTask(this.userTask.id)
+            .subscribe(
+                response => {
+                    this.assignUserTask_ToCurrentUser_Response = response
+                    this.passedTest_BpmUserTask_assignUserTask_ToCurrentUser = true
+                    // next test in chain (7)
                     this.test_BpmUserTask_executeUserTask()
                 },
                 errorResponse => this.errorResponse = errorResponse
@@ -220,7 +236,7 @@ export class TestBpmActivityTaskComponent implements OnInit {
                 response => {
                     this.executeUserTaskResponse = response
                     this.passedTest_BpmUserTask_executeUserTask = true
-                    // next test in chain (6)
+                    // next test in chain (8)
                 },
                 errorResponse => this.errorResponse = errorResponse
             )

@@ -90,14 +90,26 @@
 
 <md-card-subtitle>
     <md-checkbox 
-        [checked]="passedTest_BpmUserTask_assignUserTask"
+        [checked]="passedTest_BpmUserTask_assignUserTask_ToSpecificUser"
         [disabled]="true" >
     </md-checkbox>
-    assignUserTask
+    assignUserTask To Specfic User
 </md-card-subtitle>
 <md-card-content>
-    User Task Assign: {{userTask?.name}} => {{assignUserName}}<br>
-    User Task Assign Response: {{assignUserTaskResponse | json}}
+    User Task Assign: {{userTask?.name}} => {{assignUserName}}<br><br>
+    User Task Assign Response: {{assignUserTask_ToSpecificUser_Response | json}}
+</md-card-content>
+
+<md-card-subtitle>
+    <md-checkbox 
+        [checked]="passedTest_BpmUserTask_assignUserTask_ToCurrentUser"
+        [disabled]="true" >
+    </md-checkbox>
+    assignUserTask To Current User
+</md-card-subtitle>
+<md-card-content>
+    User Task Assign: {{userTask?.name}} => <i>Current Logged User</i><br>
+    User Task Assign Response: {{assignUserTask_ToCurrentUser_Response | json}}
 </md-card-content>
 
 <md-card-subtitle>
