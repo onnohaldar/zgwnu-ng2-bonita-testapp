@@ -31,6 +31,7 @@ export class TestFileUploadComponent implements OnInit {
 
   // File Upload test vars
   contractInputFile: BonitaContractInputFile = new BonitaContractInputFile()
+  contractInputFileId: string = 'contractInputFileId01'
   passedTest_FileUploadComponent: boolean = false
 
   fileUploadContract: FileUploadContract

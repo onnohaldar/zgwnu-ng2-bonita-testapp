@@ -10,6 +10,7 @@
 <md-card-content *ngIf="!passedTest_FileUploadComponent">
     <bonita-file-upload
         [contractInputFile]="contractInputFile" 
+        [contractInputFileId]="contractInputFileId"
         (onFileSelected)="test__FileUploadComponent($event)" >
     </bonita-file-upload>
     Press upload file button and select a PDF file...
