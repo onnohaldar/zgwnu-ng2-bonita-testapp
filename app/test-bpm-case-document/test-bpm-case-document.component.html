@@ -1,0 +1,12 @@
+<md-card-title>Bonita Bpm Case Document</md-card-title>
+
+<md-card-subtitle>
+    <md-checkbox 
+        [checked]="passedTest_BpmCaseDocument_createDocument"
+        [disabled]="true" >
+    </md-checkbox>
+    createDocument
+</md-card-subtitle>
+<md-card-content>
+{{documentCreated | json}}
+</md-card-content>

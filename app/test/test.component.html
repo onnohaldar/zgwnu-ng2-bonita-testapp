@@ -42,4 +42,10 @@
         </test-file-upload>
     </md-card>
 
+    <md-card *ngIf="testCase.uploadedDocFile != undefined" class="test-item">
+        <test-bpm-case-document
+            [testCase]="testCase" >
+        </test-bpm-case-document>
+    </md-card>
+
 </div>

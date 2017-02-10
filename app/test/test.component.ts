@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core'
 
 import { BonitaBpmProcessService, BonitaBpmActivityService, BonitaBpmHumanTaskService, BonitaBpmTaskService, 
   BonitaBpmUserTaskService, BonitaBpmDataService, BonitaBusinessDataService, BonitaFileUploadService,
-  BonitaBpmCaseService
+  BonitaBpmCaseService, BonitaBpmCaseDocumentService
   } from '../zgwnu2/bonita'
 
 import { TestCase } from './test-case'
@@ -13,6 +13,7 @@ import { TestBpmDataComponent } from '../test-bpm-data/test-bpm-data.component'
 import { TestBusinessDataComponent } from '../test-business-data/test-business-data.component'
 import { TestFileUploadComponent } from '../test-file-upload/test-file-upload.component'
 import { TestBpmCaseComponent } from '../test-bpm-case/test-bpm-case.component'
+import { TestBpmCaseDocumentComponent } from '../test-bpm-case-document/test-bpm-case-document.component'
 
 @Component({
   moduleId: module.id,
@@ -42,6 +43,10 @@ import { TestBpmCaseComponent } from '../test-bpm-case/test-bpm-case.component'
 
     BonitaBpmCaseService,
     TestBpmCaseComponent, 
+
+    BonitaBpmCaseDocumentService, 
+    TestBpmCaseDocumentComponent, 
+
     ]
 })
 

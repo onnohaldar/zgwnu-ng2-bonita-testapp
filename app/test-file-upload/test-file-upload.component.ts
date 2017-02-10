@@ -57,6 +57,8 @@ export class TestFileUploadComponent implements OnInit {
     // check if a temporary file is uploaded to BonitaBPM server
     if (outputFile.tempPath) { 
       this.passedTest_FileUploadComponent = true
+      // store uploaded document file to use for case document test
+      this.testCase.uploadedDocFile = outputFile
       // next test in chain (1 = Task upload to process document)
       this.fileUploadContract = new FileUploadContract(outputFile)
       this.test_FileUploadTask()
