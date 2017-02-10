@@ -13,6 +13,12 @@
     </md-card>
 
     <md-card *ngIf="testCase.caseId != undefined" class="test-item">
+        <test-bpm-case
+            [testCase]="testCase" >
+        </test-bpm-case>
+    </md-card>
+
+    <md-card *ngIf="testCase.caseId != undefined" class="test-item">
         <test-bpm-activity-task
             [testCase]="testCase" >
         </test-bpm-activity-task>

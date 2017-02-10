@@ -1,4 +1,4 @@
-import {Component, OnInit, Input } from '@angular/core'
+import { Component, OnInit, Input } from '@angular/core'
 
 import { BonitaResponse ,BonitaErrorResponse, BonitaSearchParms, 
   BonitaBpmCaseService, BonitaCase
@@ -10,7 +10,7 @@ import { TestCase } from '../test/test-case'
   moduleId: module.id,
   selector: 'test-bpm-case',
   templateUrl: 'test-bpm-case.component.html',
-  styleUrls: [ 'test-bpm-case.component.css' ],
+  styleUrls: [ 'test-bpm-case.component.css' ], 
 })
 
 export class TestBpmCaseComponent implements OnInit {
@@ -51,7 +51,7 @@ export class TestBpmCaseComponent implements OnInit {
           this.caseGet = bonitaCase
           this.passedTest_BpmCase_getCase = true
           // next test in chain (1)
-          this.test_BpmCase_searchCase
+          this.test_BpmCase_searchCase()
         },
         errorResponse => this.errorResponse = errorResponse
       )
@@ -61,7 +61,7 @@ export class TestBpmCaseComponent implements OnInit {
     let testSearchParms: BonitaSearchParms = new BonitaSearchParms(0, 1)
     testSearchParms.filters = [
         'id=' + this.caseGet.id, 
-        'started_by=' + this.caseGet.started_by
+       'started_by=' + this.caseGet.started_by
         ]
 
     this.bpmCaseService.searchCases(testSearchParms)

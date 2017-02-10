@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core'
 
 import { BonitaBpmProcessService, BonitaBpmActivityService, BonitaBpmHumanTaskService, BonitaBpmTaskService, 
-  BonitaBpmUserTaskService, BonitaBpmDataService, BonitaBusinessDataService, BonitaFileUploadService
+  BonitaBpmUserTaskService, BonitaBpmDataService, BonitaBusinessDataService, BonitaFileUploadService,
+  BonitaBpmCaseService
   } from '../zgwnu2/bonita'
 
 import { TestCase } from './test-case'
@@ -11,6 +12,7 @@ import { TestBpmActivityTaskComponent } from '../test-bpm-activity-task/test-bpm
 import { TestBpmDataComponent } from '../test-bpm-data/test-bpm-data.component'
 import { TestBusinessDataComponent } from '../test-business-data/test-business-data.component'
 import { TestFileUploadComponent } from '../test-file-upload/test-file-upload.component'
+import { TestBpmCaseComponent } from '../test-bpm-case/test-bpm-case.component'
 
 @Component({
   moduleId: module.id,
@@ -37,6 +39,9 @@ import { TestFileUploadComponent } from '../test-file-upload/test-file-upload.co
 
     BonitaFileUploadService, 
     TestFileUploadComponent, 
+
+    BonitaBpmCaseService,
+    TestBpmCaseComponent, 
     ]
 })
 

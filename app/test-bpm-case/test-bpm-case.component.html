@@ -1,0 +1,40 @@
+<md-card-title>Bonita Bpm Case</md-card-title>
+
+<md-card-subtitle>
+    <md-checkbox 
+        [checked]="passedTest_BpmCase_getCase"
+        [disabled]="true" >
+    </md-checkbox>
+    getCase
+</md-card-subtitle>
+<md-card-content>
+    getCase Id: {{caseGet?.id}}<br>
+    getCase Start: {{caseGet?.start}}<br>
+    getCase State: {{caseGet?.state}}<br>
+    getCase started_by: {{caseGet?.started_by}}
+</md-card-content>
+
+<md-card-subtitle>
+    <md-checkbox 
+        [checked]="passedTest_BpmCase_searchCase"
+        [disabled]="true" >
+    </md-checkbox>
+    searchCase
+</md-card-subtitle>
+<md-card-content>
+    searchCase Id: {{caseSearch?.id}}<br>
+    searchCase Start: {{caseSearch?.start}}<br>
+    searchCase State: {{caseSearch?.state}}<br>
+    searchCase started_by: {{caseSearch?.started_by}}
+</md-card-content>
+
+<md-card-subtitle>
+    <md-checkbox 
+        [checked]="passedTest_BpmCase_getCaseContext"
+        [disabled]="true" >
+    </md-checkbox>
+    getCaseContext
+</md-card-subtitle>
+<md-card-content>
+{{caseContext | json}}
+</md-card-content>
