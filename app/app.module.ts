@@ -1,9 +1,10 @@
 // generic angular 2 modules
-import { NgModule }      from '@angular/core'
-import { BrowserModule } from '@angular/platform-browser'
-import { FormsModule }   from '@angular/forms'
-import { HttpModule }    from '@angular/http'
-import { MaterialModule } from '@angular/material'
+import { NgModule }             from '@angular/core'
+import { BrowserModule }        from '@angular/platform-browser'
+import { FormsModule }          from '@angular/forms'
+import { ReactiveFormsModule }  from '@angular/forms'
+import { HttpModule }           from '@angular/http'
+import { MaterialModule }       from '@angular/material'
 
 // additional angular 2 modules
 import { DatepickerModule } from './zgwnu2/datepicker/datepicker.module'
@@ -26,6 +27,7 @@ import { TestBusinessDataComponent } from './test-business-data/test-business-da
 import { TestFileUploadComponent } from './test-file-upload/test-file-upload.component'
 import { TestBpmCaseComponent } from './test-bpm-case/test-bpm-case.component'
 import { TestBpmCaseDocumentComponent } from './test-bpm-case-document/test-bpm-case-document.component'
+import { TestMdAutocompleteComponent } from './test-md-autocomplete/test-md-autocomplete.component'
 
 // application service providers
 import { BonitaConfigService } from './zgwnu2/bonita'
@@ -36,6 +38,7 @@ import { BonitaConfigService } from './zgwnu2/bonita'
   imports: [ 
     BrowserModule,
     FormsModule, 
+    ReactiveFormsModule, 
     HttpModule,
     MaterialModule.forRoot(), 
     DatepickerModule, 
@@ -56,6 +59,7 @@ import { BonitaConfigService } from './zgwnu2/bonita'
     TestFileUploadComponent, 
     TestBpmCaseComponent, 
     TestBpmCaseDocumentComponent, 
+    TestMdAutocompleteComponent, 
    ],
   // globaly used providers (services)
   providers: [ 

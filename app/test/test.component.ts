@@ -14,6 +14,7 @@ import { TestBusinessDataComponent } from '../test-business-data/test-business-d
 import { TestFileUploadComponent } from '../test-file-upload/test-file-upload.component'
 import { TestBpmCaseComponent } from '../test-bpm-case/test-bpm-case.component'
 import { TestBpmCaseDocumentComponent } from '../test-bpm-case-document/test-bpm-case-document.component'
+import { TestMdAutocompleteComponent } from '../test-md-autocomplete/test-md-autocomplete.component'
 
 @Component({
   moduleId: module.id,
@@ -46,6 +47,8 @@ import { TestBpmCaseDocumentComponent } from '../test-bpm-case-document/test-bpm
 
     BonitaBpmCaseDocumentService, 
     TestBpmCaseDocumentComponent, 
+
+    TestMdAutocompleteComponent, 
 
     ]
 })
